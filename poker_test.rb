@@ -31,4 +31,11 @@ class Poker1 < Minitest::Test
         assert_equal(Array, y.x.class)
     end
 
+    def test_that_hand_can_hold
+        hand = Hand.new
+        card = Cards.new("J", "H")
+        hand.add_dem_cards_to_da_hand(card)
+        assert_equal(Cards, hand.x[0].class)
+        assert_equal("JH", hand.x[0].card_name)
+    end
 end

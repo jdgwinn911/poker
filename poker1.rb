@@ -37,9 +37,9 @@ class Hand
     def initialize()
         @x = []
     end
-    # def add_dem_cards_to_da_hand(card)
-    #     @x << card 
-    # end
+    def add_dem_cards_to_da_hand(card)
+        @x << card 
+    end 
 
     attr_reader :x
 end
