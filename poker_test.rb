@@ -12,7 +12,9 @@ class Poker1 < Minitest::Test
         assert_equal("3", x.card_value)
     end
 
-
-
+    def test_for_suit
+        x = Cards.new("Hearts")
+        assert_equal("Hearts", x.card_shapes)
+    end
 
 end
