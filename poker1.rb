@@ -27,13 +27,19 @@ class Cards
         when "S"
             @card_shapes = "Spades"
         end
-
-
     end
-
-
-
     attr_reader :card_name
     attr_reader :card_value
     attr_reader :card_shapes
+end
+
+class Hand
+    def initialize()
+        @x = []
+    end
+    # def add_dem_cards_to_da_hand(card)
+    #     @x << card 
+    # end
+
+    attr_reader :x
 end

@@ -21,5 +21,14 @@ class Poker1 < Minitest::Test
         x = Cards.new("J", "C")
         assert_equal("11", x.card_value)
     end
+    def test_the_hand
+        x = Hand.new
+        assert_equal(Hand, x.class)
+    end
+
+    def test_the_hand_2
+        y = Hand.new
+        assert_equal(Array, y.x.class)
+    end
 
 end
