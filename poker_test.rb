@@ -13,7 +13,7 @@ class Poker1 < Minitest::Test
     end
 
     def test_for_suit
-        x = Cards.new("Hearts")
+        x = Cards.new("3", "H")
         assert_equal("Hearts", x.card_shapes)
     end
 
