@@ -17,4 +17,9 @@ class Poker1 < Minitest::Test
         assert_equal("H", x.card_shapes)
     end
 
+    def test_that_card_has_value
+        x = Cards.new("J", "C")
+        assert_equal("11", x.card_value)
+    end
+
 end
