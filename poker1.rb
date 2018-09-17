@@ -5,5 +5,5 @@ class Cards
         @card_value = "#{number}"
     end
     attr_reader :card_name
-    
+    attr_reader :card_value
 end
