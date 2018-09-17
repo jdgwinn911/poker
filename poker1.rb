@@ -3,7 +3,32 @@ class Cards
     def initialize(number,shapes)
         @card_name = "#{number}#{shapes}"
         @card_value = "#{number}"
-        @card_shapes = "#{shapes}"
+        case number
+        when "T"
+            @card_value = "10"
+        when "K"
+            @card_value = "13"
+        when "Q"
+            @card_value = "12"
+        when "J"
+            @card_value = "11"
+        when "A"
+            @card_value = "14"
+        end
+
+        @card_shapes = ""
+        case shapes 
+        when "H"
+            @card_shapes = "Hearts"
+        when "C"
+            @card_shapes = "Clubs"
+        when "D"
+            @card_shapes =  "Diamonds"
+        when "S"
+            @card_shapes = "Spades"
+        end
+
+
     end
 
 
