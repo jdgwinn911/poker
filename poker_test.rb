@@ -48,6 +48,7 @@ class Poker1 < Minitest::Test
         assert_equal(52, deck.card_deck.length)
         assert_equal("4C", deck.card_deck[2].card_name)
         assert_equal("Diamonds", deck.card_deck[13].card_shapes)
+        assert_equal("10", deck.card_deck[7].card_value)
     end
 
 end
