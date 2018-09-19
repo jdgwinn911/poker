@@ -46,6 +46,7 @@ class Poker1 < Minitest::Test
         assert_equal("Hearts", deck.card_deck[26].card_shapes)
         assert_equal("5", deck.card_deck[3].card_value)
         assert_equal(52, deck.card_deck.length)
+        assert_equal("3S", deck.card_deck[2].card_name)
     end
 
 end
