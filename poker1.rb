@@ -55,6 +55,6 @@ class Deck
             end
             @card_deck
         end
-        attr_reader :card_deck
     end
+    attr_reader :card_deck
 end
