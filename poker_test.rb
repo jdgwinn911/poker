@@ -42,7 +42,7 @@ class Poker1 < Minitest::Test
     def test_that_deck_has_cards
         deck = Deck.new
         assert_equal(Cards, deck.card_deck[0].class)
-        assert_equal(Cards, deck.card_deck[0].card_name)
+        assert_equal("2C", deck.card_deck[0].card_name)
     end
 
 end
