@@ -43,3 +43,18 @@ class Hand
 
     attr_reader :x
 end
+
+class Deck
+    def initialize()
+        @card_deck = []
+        card_value = ['2', '3', '4', '5', '6', '7', '8', '9', 'T', 'J', 'Q', 'K', 'A']
+        card_suits = ['C', 'D', 'H', 'S']
+        card_suits.each do |suit|
+            card_value.each do |val|
+                @card_deck << Cards.new(val, suit)
+            end
+            @card_deck
+        end
+        attr_reader :card_deck
+    end
+end

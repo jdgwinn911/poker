@@ -38,4 +38,10 @@ class Poker1 < Minitest::Test
         assert_equal(Cards, hand.x[0].class)
         assert_equal("JH", hand.x[0].card_name)
     end
+
+    def test_that_deck_has_cards
+        deck = Deck.new
+        assert_equal(Cards, deck.card_deck[0].class)
+    end
+
 end
