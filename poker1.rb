@@ -57,5 +57,9 @@ class Deck
         end
     end
 
+    def shuffle_deck()
+        @card_deck.shuffle!
+    end
+    
     attr_reader :card_deck
 end
