@@ -66,12 +66,31 @@ class Poker1 < Minitest::Test
         assert_equal(5, y.x.length)
     end 
 
-    def test_that_the_other_hand_gets_dealt
+   def test_that_the_other_hand_gets_dealt
         v = Deck.new
         v.shuffle_deck()
         o = v.deal_hand()
         assert_equal(5, o.x.length)
     end
+
+    def test_that_the_deck_length_has_changed
+        d = Deck.new
+        d.shuffle_deck()
+        y = d.deal_hand()
+        c = d.deal_hand()
+        assert_equal(42, d.card_deck.length)
+    end
+
+    def test_that_card_exists_in_hand
+        g = Deck.new
+        g.shuffle_deck()
+        k = g.deal_hand()
+        assert_equal(String, k.x[0].class)
+    end
+
+
+
+
 
 
 
