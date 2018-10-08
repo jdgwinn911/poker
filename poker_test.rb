@@ -85,7 +85,7 @@ class Poker1 < Minitest::Test
         g = Deck.new
         g.shuffle_deck()
         k = g.deal_hand()
-        assert_equal(String, k.x[0].class)
+        assert_equal(Cards, k.x[0].class)
     end
 
 
