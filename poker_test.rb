@@ -56,6 +56,14 @@ class Poker1 < Minitest::Test
         s = Deck.new
         s.shuffle_deck()
         refute_equal(d, s)
+
     end
 
+    def test_that_hand_has_been_dealt_5_cards
+       z = Deck.new 
+       z.shuffle_deck()
+       y = z.deal_hand()
+
+        assert_equal(5, y.x.length)
+    end 
 end
