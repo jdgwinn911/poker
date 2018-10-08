@@ -63,10 +63,12 @@ class Deck
 
     def deal_hand()
       y = Hand.new
+      o = Hand.new
         5.times do 
          y.add_dem_cards_to_da_hand(@card_deck.pop())
+         o.add_dem_cards_to_da_hand(@card_deck.pop())
         end
-        return y 
+        return y && o
     end
 
 
