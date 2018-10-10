@@ -88,6 +88,20 @@ class Poker1 < Minitest::Test
         assert_equal(Cards, k.x[0].class)
     end
 
+    def test_that_hand_is_a_straigh_flush
+        temp = Hand.new
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("3", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("4", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("5", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("6", "H"))
+        game = Rules.new
+        assert_equal(true, game.straight_flush(temp))
+    end
+        
+
+
+
 
 
 

@@ -73,3 +73,11 @@ class Deck
 
     attr_reader :card_deck
 end
+
+class Rules
+    def initialize()
+    end
+
+    def straight_flush(hand)
+    end
+end
