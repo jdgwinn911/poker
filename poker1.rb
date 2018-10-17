@@ -78,6 +78,30 @@ class Rules
     def initialize()
     end
 
+    def array_increments_by?(step, array)
+        sorted = array.sort
+        lastNum = sorted[0]
+        sorted[1, sorted.count].each do |n|
+          if lastNum + step != n
+            return false
+          end
+          lastNum = n
+        end
+        true
+      end
+
     def straight_flush(hand)
+        temp_value = []
+        temp_suit = []
+        hand.x.each_with_index do |v, i|
+            temp_value << v.card_value.to_i
+            temp_suit << v.card_shapes
+        end
+        if temp_suit.all? {|v| v == temp_suit[0]} && array_increments_by?(1, temp_value)
+            return true
+        end
+        false
+         
+
     end
 end
