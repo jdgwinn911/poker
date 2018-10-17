@@ -98,6 +98,17 @@ class Poker1 < Minitest::Test
         game = Rules.new
         assert_equal(true, game.straight_flush(temp))
     end
+
+    def test_that_hand_is_4_of_a_kind
+        temp = Hand.new
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "C"))
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "D"))
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "S"))
+        game = Rules.new
+        assert_equal(true, game.four_of_a_kind(temp))
+    end
+
         
 
 
