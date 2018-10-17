@@ -116,4 +116,8 @@ class Rules
         end
         false
     end
+
+
+    def full_house(hand)
+    end
 end
