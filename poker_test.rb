@@ -105,6 +105,7 @@ class Poker1 < Minitest::Test
         temp.add_dem_cards_to_da_hand(Cards.new("2", "C"))
         temp.add_dem_cards_to_da_hand(Cards.new("2", "D"))
         temp.add_dem_cards_to_da_hand(Cards.new("2", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("8", "S"))
         game = Rules.new
         assert_equal(true, game.four_of_a_kind(temp))
     end
@@ -121,15 +122,5 @@ class Poker1 < Minitest::Test
     end
 
         
-
-
-
-
-
-
-
-
-
-
 
 end
