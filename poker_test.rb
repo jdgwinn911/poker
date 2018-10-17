@@ -109,6 +109,17 @@ class Poker1 < Minitest::Test
         assert_equal(true, game.four_of_a_kind(temp))
     end
 
+    # def test_that_hand_is_a_full_house
+    #     temp = Hand.new
+    #     temp.add_dem_cards_to_da_hand(Cards.new("4", "S"))
+    #     temp.add_dem_cards_to_da_hand(Cards.new("4", "C"))
+    #     temp.add_dem_cards_to_da_hand(Cards.new("4", "D"))
+    #     temp.add_dem_cards_to_da_hand(Cards.new("6", "H"))
+    #     temp.add_dem_cards_to_da_hand(Cards.new("6", "S"))
+    #     game = Rules.new
+    #     assert_equal(true, game.full_house(temp))
+    # end
+
         
 
 

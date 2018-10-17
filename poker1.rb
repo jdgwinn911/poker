@@ -105,9 +105,11 @@ class Rules
     end
 
     def four_of_a_kind(hand)
+        tmp_value = []
         tmp_suit = []
         hand.x.each_with_index do |v, i|
             tmp_suit << v.card_shapes
+            tmp_value << v.card_value
         end
         if tmp_value.all? {|v| v == tmp_value[0]}  
             return true
