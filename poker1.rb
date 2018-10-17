@@ -105,13 +105,13 @@ class Rules
     end
 
     def four_of_a_kind(hand)
-        tmp_value = []
-        tmp_suit = []
+        temp_value = []
+        temp_suit = []
         hand.x.each_with_index do |v, i|
-            tmp_suit << v.card_shapes
-            tmp_value << v.card_value
+            temp_suit << v.card_shapes
+            temp_value << v.card_value
         end
-        if tmp_value.all? {|v| v == tmp_value[0]}  
+        if temp_value.all? {|v| v == temp_value[0]}  
             return true
         end
         false
@@ -119,5 +119,31 @@ class Rules
 
 
     def full_house(hand)
+        temp_suit = []
+        temp_value = []
+        hand.x.each_with_index do |v, i|
+            temp_suit << v.card_shapes
+            temp_value << v.card_value
+        end
+        p temp_value
+        temp_value.each_with_index do |v, i|
+            counter = 0
+            temp_value.each do |k|
+                if v == k 
+                    counter += 1 
+                end
+            end
+            if counter == 3 
+                temp_value.delete(v)
+                p temp_value
+                if temp_value[0] == temp_value[1]
+                    return true
+                else 
+                    break
+                end
+            end
+        end
+        
+        false 
     end
 end
