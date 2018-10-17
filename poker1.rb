@@ -111,8 +111,18 @@ class Rules
             temp_suit << v.card_shapes
             temp_value << v.card_value
         end
-        if temp_value.all? {|v| v == temp_value[0]}  
-            return true
+        temp_value.each_with_index do |v, i|
+            counter = 0
+            temp_value.each do |k|
+                if v == k 
+                    counter += 1 
+                end
+            end
+            if counter == 4
+                return true
+            else
+                 break
+            end
         end
         false
     end
@@ -125,7 +135,6 @@ class Rules
             temp_suit << v.card_shapes
             temp_value << v.card_value
         end
-        p temp_value
         temp_value.each_with_index do |v, i|
             counter = 0
             temp_value.each do |k|
@@ -146,4 +155,9 @@ class Rules
         
         false 
     end
+
+
+
+
+
 end
