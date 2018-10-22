@@ -138,6 +138,14 @@ class Rules
     end
 
     def four_of_a_kind_high_card(hand)
+        temp_value = []
+        hand.x.each_with_index do |v, i|
+            temp_value << v.card_value
+        end
+        temp_value.sort()
+        return temp_value.last()
+
+
     end
 
 
