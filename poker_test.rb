@@ -155,6 +155,5 @@ class Poker1 < Minitest::Test
     end
 
 
-        
 
 end

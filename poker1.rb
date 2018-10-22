@@ -183,7 +183,9 @@ class Rules
 
     def full_house_high_card(hand)
         temp_value = []
+        temp_suit = []
         hand.x.each_with_index do |v, i|
+            temp_suit << v.card_shapes
             temp_value << v.card_value.to_i
             counter = 0
             temp_value.each_with_index do |v, i|
@@ -194,16 +196,10 @@ class Rules
                     end
                 end
                 if counter == 3 
-                    return v
+                    return "#{temp_value.last()} of #{temp_suit[2]}"
                 end
             end
         end
-
-            
-
-
-
-
     end
 
 
