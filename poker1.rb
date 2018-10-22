@@ -177,6 +177,9 @@ class Rules
         false 
     end
 
+    def full_house_high_card(hand)
+    end
+
 
 
 
