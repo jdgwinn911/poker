@@ -107,7 +107,7 @@ class Poker1 < Minitest::Test
         temp.add_dem_cards_to_da_hand(Cards.new("5", "H"))
         temp.add_dem_cards_to_da_hand(Cards.new("6", "H"))
         game = Rules.new
-        assert_equal("6S", game.high_card_strt_flush(temp))
+        assert_equal("6 of Hearts", game.high_card_strt_flush(temp))
     end
 
     def test_that_hand_is_4_of_a_kind
