@@ -129,7 +129,7 @@ class Poker1 < Minitest::Test
         temp.add_dem_cards_to_da_hand(Cards.new("2", "S"))
         temp.add_dem_cards_to_da_hand(Cards.new("8", "S"))
         game = Rules.new
-        assert_equal("8 ofSpades", game.four_of_a_kind_high_card(temp))
+        assert_equal("8 of Spades", game.four_of_a_kind_high_card(temp))
     end
 
     def test_that_hand_is_a_full_house
