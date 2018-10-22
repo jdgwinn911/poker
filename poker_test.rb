@@ -121,6 +121,18 @@ class Poker1 < Minitest::Test
         assert_equal(true, game.full_house(temp))
     end
 
+
+    def test_that_strt_flush_has_high_card
+        temp = Hand.new
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("3", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("4", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("5", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("6", "H"))
+        game = Rules.new
+        assert_equal(true, game.high_card_strt_flush(temp))
+    end
+
         
 
 end

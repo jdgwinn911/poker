@@ -104,6 +104,16 @@ class Rules
          
     end
 
+    def high_card_strt_flush(hand)
+        temp_value = []
+        hand.x.each_with_index do |v, i|
+            temp_value << v.card_value.to_i
+        end
+        temp_value.sort()
+        return temp_value.last()
+
+    end
+
     def four_of_a_kind(hand)
         temp_value = []
         temp_suit = []
