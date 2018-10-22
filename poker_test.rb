@@ -99,6 +99,17 @@ class Poker1 < Minitest::Test
         assert_equal(true, game.straight_flush(temp))
     end
 
+    def test_that_strt_flush_has_high_card
+        temp = Hand.new
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("3", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("4", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("5", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("6", "H"))
+        game = Rules.new
+        assert_equal(6, game.high_card_strt_flush(temp))
+    end
+
     def test_that_hand_is_4_of_a_kind
         temp = Hand.new
         temp.add_dem_cards_to_da_hand(Cards.new("2", "H"))
@@ -110,6 +121,17 @@ class Poker1 < Minitest::Test
         assert_equal(true, game.four_of_a_kind(temp))
     end
 
+    def test_that_four_of_a_kind_has_high_card
+        temp = Hand.new
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "C"))
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "D"))
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("8", "S"))
+        game = Rules.new
+        assert_equal(true, game.four_of_a_kind_high_card(temp))
+    end
+
     def test_that_hand_is_a_full_house
         temp = Hand.new
         temp.add_dem_cards_to_da_hand(Cards.new("4", "S"))
@@ -119,18 +141,6 @@ class Poker1 < Minitest::Test
         temp.add_dem_cards_to_da_hand(Cards.new("6", "S"))
         game = Rules.new
         assert_equal(true, game.full_house(temp))
-    end
-
-
-    def test_that_strt_flush_has_high_card
-        temp = Hand.new
-        temp.add_dem_cards_to_da_hand(Cards.new("2", "H"))
-        temp.add_dem_cards_to_da_hand(Cards.new("3", "H"))
-        temp.add_dem_cards_to_da_hand(Cards.new("4", "H"))
-        temp.add_dem_cards_to_da_hand(Cards.new("5", "H"))
-        temp.add_dem_cards_to_da_hand(Cards.new("6", "H"))
-        game = Rules.new
-        assert_equal(6, game.high_card_strt_flush(temp))
     end
 
         

@@ -137,6 +137,9 @@ class Rules
         false
     end
 
+    def four_of_a_kind_high_card(hand)
+    end
+
 
     def full_house(hand)
         temp_suit = []
