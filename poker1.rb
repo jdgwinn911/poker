@@ -180,19 +180,23 @@ class Rules
     def full_house_high_card(hand)
         temp_value = []
         hand.x.each_with_index do |v, i|
-            temp_value << v.card_value
+            temp_value << v.card_value.to_i
             counter = 0
-            temp_value.each do |k|
-                if v == k
-                    counter += 1
+            temp_value.each_with_index do |v, i|
+                counter = 0
+                temp_value.each do |k|
+                    if v == k 
+                        counter += 1 
+                    end
+                end
+                if counter == 3 
+                    return v
                 end
             end
-            if counter == 3
-                return true
-            else
-                break
-            end
         end
+
+            
+
 
 
 

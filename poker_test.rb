@@ -151,7 +151,7 @@ class Poker1 < Minitest::Test
         temp.add_dem_cards_to_da_hand(Cards.new("6", "H"))
         temp.add_dem_cards_to_da_hand(Cards.new("6", "S"))
         game = Rules.new
-        assert_equal(true, game.full_house_high_card(temp))
+        assert_equal(4, game.full_house_high_card(temp))
     end
 
 
