@@ -282,6 +282,9 @@ class Rules
         false
     end
 
+    def three_of_a_kind_high_card(hand)
+    end
+
 
 
 
