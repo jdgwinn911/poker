@@ -262,6 +262,24 @@ class Rules
     end
 
     def three_of_a_kind(hand)
+        temp_value = []
+        hand.x.each_with_index do |v, i|
+            temp_value << v.card_value
+        end
+        temp_value.each_with_index do |v, i|
+            counter = 0
+            temp_value.each do |k|
+                if v == k 
+                    counter += 1 
+                end
+            end
+            if counter == 3
+                return true
+            else
+                 break
+            end
+        end
+        false
     end
 
 
