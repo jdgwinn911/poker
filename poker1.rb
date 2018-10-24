@@ -144,7 +144,7 @@ class Rules
             temp_suit << v.card_shapes
             temp_value << v.card_value.to_i
         end
-        return "#{temp_value.last()} of #{temp_suit[4]}"
+        return "#{temp_value.sort().last()} of #{temp_suit[4]}"
     end
 
 
