@@ -159,9 +159,9 @@ class Poker1 < Minitest::Test
         temp = Hand.new
         temp.add_dem_cards_to_da_hand(Cards.new("4", "S"))
         temp.add_dem_cards_to_da_hand(Cards.new("5", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("6", "S"))
         temp.add_dem_cards_to_da_hand(Cards.new("7", "S"))
         temp.add_dem_cards_to_da_hand(Cards.new("8", "S"))
-        temp.add_dem_cards_to_da_hand(Cards.new("6", "S"))
         game = Rules.new
         assert_equal(true, game.flush(temp))
     end
@@ -171,8 +171,8 @@ class Poker1 < Minitest::Test
         temp.add_dem_cards_to_da_hand(Cards.new("4", "S"))
         temp.add_dem_cards_to_da_hand(Cards.new("5", "S"))
         temp.add_dem_cards_to_da_hand(Cards.new("6", "S"))
-        temp.add_dem_cards_to_da_hand(Cards.new("7", "S"))
         temp.add_dem_cards_to_da_hand(Cards.new("8", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("7", "S"))
         game = Rules.new
         assert_equal("8 of Spades", game.high_card_flush(temp))
     end
@@ -196,7 +196,7 @@ class Poker1 < Minitest::Test
         temp.add_dem_cards_to_da_hand(Cards.new("5", "D"))
         temp.add_dem_cards_to_da_hand(Cards.new("6", "S"))
         game = Rules.new
-        assert_equal(true, game.straight_high_card(temp))
+        assert_equal("6 of Spades", game.straight_high_card(temp))
     end
 
 

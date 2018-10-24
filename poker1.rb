@@ -228,8 +228,7 @@ class Rules
             temp_suit << v.card_shapes
             temp_value << v.card_value.to_i
         end
-        temp_value.sort()
-        return "#{temp_value.last()} of #{temp_suit[0]}"
+        return "#{temp_value.sort().last()} of #{temp_suit[0]}"
 
     end
 
@@ -248,6 +247,19 @@ class Rules
     end
 
     def straight_high_card(hand)
+        temp_value = []
+        temp_suit = []
+        hand.x.each_with_index do |v, i|
+            temp_suit << v.card_shapes
+            temp_value << v.card_value.to_i
+        end
+        if temp_suit && array_increments_by?(1, temp_value)
+            high_num = temp_value.sort().last()
+            place_holder = temp_value.index(high_num)
+            right_suit = temp_suit[place_holder]
+        return "#{high_num} of #{right_suit}"
+        end
+
     end
 
 
