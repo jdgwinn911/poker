@@ -125,9 +125,9 @@ class Poker1 < Minitest::Test
         temp = Hand.new
         temp.add_dem_cards_to_da_hand(Cards.new("2", "H"))
         temp.add_dem_cards_to_da_hand(Cards.new("2", "C"))
-        temp.add_dem_cards_to_da_hand(Cards.new("2", "D"))
+        temp.add_dem_cards_to_da_hand(Cards.new("8", "D"))
         temp.add_dem_cards_to_da_hand(Cards.new("2", "S"))
-        temp.add_dem_cards_to_da_hand(Cards.new("8", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "S"))
         game = Rules.new
         assert_equal("8 of Spades", game.four_of_a_kind_high_card(temp))
     end
@@ -168,8 +168,8 @@ class Poker1 < Minitest::Test
 
     def test_that_flush_has_high_card
         temp = Hand.new
-        temp.add_dem_cards_to_da_hand(Cards.new("4", "S"))
         temp.add_dem_cards_to_da_hand(Cards.new("5", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("4", "S"))
         temp.add_dem_cards_to_da_hand(Cards.new("6", "S"))
         temp.add_dem_cards_to_da_hand(Cards.new("8", "S"))
         temp.add_dem_cards_to_da_hand(Cards.new("7", "S"))
