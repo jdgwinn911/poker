@@ -188,6 +188,17 @@ class Poker1 < Minitest::Test
         assert_equal(true, game.straight(temp))
     end
 
+    def test_that_straight_has_high_card
+        temp = Hand.new
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("3", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("4", "C"))
+        temp.add_dem_cards_to_da_hand(Cards.new("5", "D"))
+        temp.add_dem_cards_to_da_hand(Cards.new("6", "S"))
+        game = Rules.new
+        assert_equal(true, game.straight_high_card(temp))
+    end
+
 
 
 end

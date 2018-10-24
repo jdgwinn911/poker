@@ -165,7 +165,6 @@ class Rules
             end
             if counter == 3 
                 temp_value.delete(v)
-                p temp_value
                 if temp_value[0] == temp_value[1]
                     return true
                 else 
@@ -247,6 +246,11 @@ class Rules
         end
         false
     end
+
+    def straight_high_card(hand)
+    end
+
+
 
 
 end
