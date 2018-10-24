@@ -118,9 +118,7 @@ class Rules
 
     def four_of_a_kind(hand)
         temp_value = []
-        # temp_suit = []
         hand.x.each_with_index do |v, i|
-            # temp_suit << v.card_shapes
             temp_value << v.card_value
         end
         temp_value.each_with_index do |v, i|
@@ -175,7 +173,6 @@ class Rules
                 end
             end
         end
-        
         false 
     end
 
@@ -222,10 +219,8 @@ class Rules
                 end
             end
         end
-        
         false 
     end
-
 
     def high_card_flush(hand)
         temp_value = []
@@ -237,6 +232,9 @@ class Rules
         temp_value.sort()
         return "#{temp_value.last()} of #{temp_suit[0]}"
 
+    end
+
+    def straight(hand)
     end
 
 

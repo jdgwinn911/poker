@@ -177,6 +177,17 @@ class Poker1 < Minitest::Test
         assert_equal("8 of Spades", game.high_card_flush(temp))
     end
 
+    def test_that_hand_is_a_straight
+        temp = Hand.new
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("3", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("4", "C"))
+        temp.add_dem_cards_to_da_hand(Cards.new("5", "D"))
+        temp.add_dem_cards_to_da_hand(Cards.new("6", "S"))
+        game = Rules.new
+        assert_equal(true, game.straight(temp))
+    end
+
 
 
 end
