@@ -103,8 +103,8 @@ class Poker1 < Minitest::Test
         temp = Hand.new
         temp.add_dem_cards_to_da_hand(Cards.new("2", "H"))
         temp.add_dem_cards_to_da_hand(Cards.new("3", "H"))
-        temp.add_dem_cards_to_da_hand(Cards.new("4", "H"))
         temp.add_dem_cards_to_da_hand(Cards.new("5", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("4", "H"))
         temp.add_dem_cards_to_da_hand(Cards.new("6", "H"))
         game = Rules.new
         assert_equal("6 of Hearts", game.high_card_strt_flush(temp))
@@ -200,5 +200,15 @@ class Poker1 < Minitest::Test
     end
 
 
+    def test_that_hand_has_three_of_a_kind
+        temp = Hand.new
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("3", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "C"))
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "D"))
+        temp.add_dem_cards_to_da_hand(Cards.new("6", "S"))
+        game = Rules.new
+        assert_equal(true, game.three_of_a_kind(temp))
+    end
 
 end
