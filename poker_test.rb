@@ -151,9 +151,20 @@ class Poker1 < Minitest::Test
         temp.add_dem_cards_to_da_hand(Cards.new("6", "H"))
         temp.add_dem_cards_to_da_hand(Cards.new("6", "S"))
         game = Rules.new
-        assert_equal("4 of Diamonds", game.full_house_high_card(temp))
+        assert_equal("4 of Spades", game.full_house_high_card(temp))
     end
 
+
+    def test_that_hand_is_flush
+        temp = Hand.new
+        temp.add_dem_cards_to_da_hand(Cards.new("4", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("5", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("7", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("8", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("6", "S"))
+        game = Rules.new
+        assert_equal(true, game.flush(temp))
+    end
 
 
 end

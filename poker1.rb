@@ -148,8 +148,6 @@ class Rules
         end
         temp_value.sort()
         return "#{temp_value.last()} of #{temp_suit[4]}"
-
-
     end
 
 
@@ -196,14 +194,14 @@ class Rules
                     end
                 end
                 if counter == 3 
-                    return "#{temp_value.last()} of #{temp_suit[2]}"
+                    return "#{temp_value.last()} of #{temp_suit[0]}"
                 end
             end
         end
     end
 
-
-
+    def flush(hand)
+    end
 
 
 end
