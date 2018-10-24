@@ -228,6 +228,15 @@ class Rules
 
 
     def high_card_flush(hand)
+        temp_value = []
+        temp_suit = []
+        hand.x.each_with_index do |v, i|
+            temp_suit << v.card_shapes
+            temp_value << v.card_value.to_i
+        end
+        temp_value.sort()
+        return "#{temp_value.last()} of #{temp_suit[0]}"
+
     end
 
 
