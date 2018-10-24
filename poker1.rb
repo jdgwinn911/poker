@@ -235,6 +235,17 @@ class Rules
     end
 
     def straight(hand)
+        temp_value = []
+        temp_suit = []
+        hand.x.each_with_index do |v, i|
+            temp_value << v.card_value.to_i
+            temp_suit << v.card_shapes
+        end
+        if temp_suit && array_increments_by?(1, temp_value)
+            p temp_value
+            return true
+        end
+        false
     end
 
 
