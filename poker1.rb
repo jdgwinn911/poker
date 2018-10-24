@@ -118,9 +118,9 @@ class Rules
 
     def four_of_a_kind(hand)
         temp_value = []
-        temp_suit = []
+        # temp_suit = []
         hand.x.each_with_index do |v, i|
-            temp_suit << v.card_shapes
+            # temp_suit << v.card_shapes
             temp_value << v.card_value
         end
         temp_value.each_with_index do |v, i|
@@ -210,16 +210,11 @@ class Rules
         counter = 0
         temp_value.each_with_index do |v, i|
             temp_value.each do |k|
-                p "does this match v #{v} and k #{k}"
                 if v == k 
                     counter += 1 
                 end
             end
-            p "goooba gooba #{temp_value}"
-            p counter
             if counter == 5 
-                p "in if "
-                p "goooba gooba #{temp_value}"
                 if temp_suit.all? {|v| v == temp_suit[0]}
                     return true
                 else 
@@ -229,6 +224,10 @@ class Rules
         end
         
         false 
+    end
+
+
+    def high_card_flush(hand)
     end
 
 
