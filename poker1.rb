@@ -201,6 +201,34 @@ class Rules
     end
 
     def flush(hand)
+        temp_suit = []
+        temp_value = []
+        hand.x.each_with_index do |v, i|
+            temp_suit << v.card_shapes
+            temp_value << v.card_value
+        end
+        counter = 0
+        temp_value.each_with_index do |v, i|
+            temp_value.each do |k|
+                p "does this match v #{v} and k #{k}"
+                if v == k 
+                    counter += 1 
+                end
+            end
+            p "goooba gooba #{temp_value}"
+            p counter
+            if counter == 5 
+                p "in if "
+                p "goooba gooba #{temp_value}"
+                if temp_suit.all? {|v| v == temp_suit[0]}
+                    return true
+                else 
+                    break
+                end
+            end
+        end
+        
+        false 
     end
 
 
