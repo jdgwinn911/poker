@@ -247,15 +247,38 @@ class Poker1 < Minitest::Test
         assert_equal(false, game.two_pair(temp))
     end
 
-    def test_that_two_pair_has_high_card
+    def test_that_two_pair_has_high_card_1
         temp = Hand.new
-        temp.add_dem_cards_to_da_hand(Cards.new("5", "H"))
-        temp.add_dem_cards_to_da_hand(Cards.new("5", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("3", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("3", "S"))
         temp.add_dem_cards_to_da_hand(Cards.new("2", "C"))
-        temp.add_dem_cards_to_da_hand(Cards.new("6", "D"))
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "D"))
         temp.add_dem_cards_to_da_hand(Cards.new("6", "S"))
         game = Rules.new
-        assert_equal(true, game.two_pair_high_card(temp))
+        assert_equal("3", game.two_pair_high_card(temp, 1 ))
+    end
+
+
+    def test_that_two_pair_has_high_card_2
+        temp = Hand.new
+        temp.add_dem_cards_to_da_hand(Cards.new("3", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("3", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "C"))
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "D"))
+        temp.add_dem_cards_to_da_hand(Cards.new("6", "S"))
+        game = Rules.new
+        assert_equal("2", game.two_pair_high_card(temp, 2 ))
+    end
+
+    def test_that_two_pair_has_high_card_3
+        temp = Hand.new
+        temp.add_dem_cards_to_da_hand(Cards.new("3", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("3", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "C"))
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "D"))
+        temp.add_dem_cards_to_da_hand(Cards.new("6", "S"))
+        game = Rules.new
+        assert_equal("6", game.two_pair_high_card(temp, 3 ))
     end
 
 end

@@ -313,7 +313,6 @@ class Rules
                 arr << k 
                 temp_value.delete(k)
             end
-
             if arr.length == 2
                 return true 
             end
@@ -321,8 +320,45 @@ class Rules
         false
     end
 
-    def two_pair_high_card(hand)
+    def two_pair_high_card(hand, compares)
+        temp_value = []
+        temp_suit = []
+        arr = []
+        hand.x.each_with_index do |v, i|
+            temp_value << v.card_value
+        end
+        temp_value.each do |k|
+            counter = 0
+            temp_value.each do |z|
+                if z == k 
+                    counter += 1
+                end
+            end
+            if counter == 2 
+                arr << k 
+                temp_value.delete(k)
+            end
+            if arr.length == 2
+                if compares != 3
+                    return arr.sort()[-compares]
+                else 
+                    temp_value.each_with_index do |v, i|
+                        if arr [i] != temp_value[i]
+                            return v 
+                        end
+                    end
+                end
+                            
+            end
+        end
+       
+
     end
+
+        
+
+
+        
 
 
 
