@@ -297,7 +297,31 @@ class Rules
 
 
     def two_pair(hand)
+        arr = []
+        temp_value = []
+        hand.x.each_with_index do |v, i|
+            temp_value << v.card_value
+        end
+        temp_value.each do |k|
+            counter = 0
+            temp_value.each do |z|
+                if z == k 
+                    counter += 1
+                end
+            end
+            if counter == 2 
+                arr << k 
+                temp_value.delete(k)
+            end
+
+            if arr.length == 2
+                return true 
+            end
+        end
+        false
     end
 
+
+    
 
 end
