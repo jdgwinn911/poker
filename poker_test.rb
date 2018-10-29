@@ -284,7 +284,7 @@ class Poker1 < Minitest::Test
 
     def test_that_hand_is_pair
         temp = Hand.new
-        temp.add_dem_cards_to_da_hand(Cards.new("5", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("7", "H"))
         temp.add_dem_cards_to_da_hand(Cards.new("5", "S"))
         temp.add_dem_cards_to_da_hand(Cards.new("2", "C"))
         temp.add_dem_cards_to_da_hand(Cards.new("6", "D"))
@@ -292,5 +292,9 @@ class Poker1 < Minitest::Test
         game = Rules.new
         assert_equal(true, game.pair(temp))
     end
+
+
+
+
 
 end

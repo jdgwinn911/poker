@@ -355,6 +355,24 @@ class Rules
     end
 
     def pair(hand)
+        temp_suit = []
+        temp_value = []
+        hand.x.each_with_index do |v, i|
+            temp_suit << v.card_shapes
+            temp_value << v.card_value
+        end
+        temp_value.each_with_index do |v, i|
+            counter = 0
+            temp_value.each do |k|
+                if v == k 
+                    counter += 1 
+                end
+            end
+            if counter == 2
+                return true 
+            end
+        end
+        false 
     end
 
         
