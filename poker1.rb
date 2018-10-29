@@ -202,22 +202,11 @@ class Rules
             temp_suit << v.card_shapes
             temp_value << v.card_value
         end
-        counter = 0
-        temp_value.each_with_index do |v, i|
-            temp_value.each do |k|
-                if v == k 
-                    counter += 1 
-                end
-            end
-            if counter == 5 
-                if temp_suit.all? {|v| v == temp_suit[0]}
-                    return true
-                else 
-                    break
-                end
-            end
+        if temp_suit.all? {|v| v == temp_suit[0]}
+            return true
+        else 
+            false
         end
-        false 
     end
 
     def high_card_flush(hand)
