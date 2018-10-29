@@ -281,4 +281,16 @@ class Poker1 < Minitest::Test
         assert_equal("6", game.two_pair_high_card(temp, 3 ))
     end
 
+
+    def test_that_hand_is_pair
+        temp = Hand.new
+        temp.add_dem_cards_to_da_hand(Cards.new("5", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("5", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "C"))
+        temp.add_dem_cards_to_da_hand(Cards.new("6", "D"))
+        temp.add_dem_cards_to_da_hand(Cards.new("6", "S"))
+        game = Rules.new
+        assert_equal(true, game.pair(temp))
+    end
+
 end

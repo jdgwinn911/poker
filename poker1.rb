@@ -351,8 +351,10 @@ class Rules
                             
             end
         end
-       
 
+    end
+
+    def pair(hand)
     end
 
         
