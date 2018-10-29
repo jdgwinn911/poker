@@ -283,6 +283,27 @@ class Rules
     end
 
     def three_of_a_kind_high_card(hand)
+        temp_value = []
+        temp_suit = []
+        hand.x.each_with_index do |v, i|
+            temp_suit << v.card_shapes
+            temp_value << v.card_value.to_i
+            counter = 0
+            temp_value.each_with_index do |v, i|
+                counter = 0
+                temp_value.each do |k|
+                    if v == k 
+                        counter += 1 
+                    end
+                end
+                if counter == 3 
+                    high_num = temp_value.last()
+                    place_holder = temp_value.index(high_num)
+                    right_suit = temp_suit[place_holder]
+                return "#{high_num} of #{right_suit}"
+                end
+            end
+        end
     end
 
 

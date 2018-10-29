@@ -213,13 +213,13 @@ class Poker1 < Minitest::Test
 
     def test_that_3_of_a_kind_has_high_card
         temp = Hand.new
-        temp.add_dem_cards_to_da_hand(Cards.new("2", "H"))
-        temp.add_dem_cards_to_da_hand(Cards.new("3", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("3", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "S"))
         temp.add_dem_cards_to_da_hand(Cards.new("2", "C"))
         temp.add_dem_cards_to_da_hand(Cards.new("2", "D"))
         temp.add_dem_cards_to_da_hand(Cards.new("6", "S"))
         game = Rules.new
-        assert_equal("6 of Spades", game.straight_high_card(temp))
+        assert_equal("2 of Spades", game.three_of_a_kind_high_card(temp))
 
     end
 
