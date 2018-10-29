@@ -296,6 +296,8 @@ class Rules
     end
 
 
+    def two_pair(hand)
+    end
 
 
 end
