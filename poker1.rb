@@ -411,6 +411,13 @@ class Rules
     end
 
     def high_card(hand)
+        temp_value = []
+        temp_suit = []
+        hand.x.each_with_index do |v, i|
+            temp_suit << v.card_shapes
+            temp_value << v.card_value.to_i
+        end
+        return temp_value.sort().last()
     end
         
 
