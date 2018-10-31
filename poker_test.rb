@@ -316,7 +316,27 @@ class Poker1 < Minitest::Test
         assert_equal(11, game.high_card(temp))
     end
 
+    def test_that_crap_hands_have_rank
+        temp = Hand.new
+        temp.add_dem_cards_to_da_hand(Cards.new("8", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("7", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("J", "C"))
+        temp.add_dem_cards_to_da_hand(Cards.new("7", "D"))
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "S"))
+        game = Rules.new
+        assert_equal(0, game.hand_rank(temp))
+    end
 
+    # def test_that_hand_has_ranking_system
+    #     temp = Hand.new
+    #     temp.add_dem_cards_to_da_hand(Cards.new("2", "H"))
+    #     temp.add_dem_cards_to_da_hand(Cards.new("3", "H"))
+    #     temp.add_dem_cards_to_da_hand(Cards.new("4", "H"))
+    #     temp.add_dem_cards_to_da_hand(Cards.new("5", "H"))
+    #     temp.add_dem_cards_to_da_hand(Cards.new("6", "H"))
+    #     game = Rules.new
+    #     assert_equal(11, game.high_card(temp))
+    # end
 
 
 

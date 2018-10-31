@@ -421,6 +421,8 @@ class Rules
     end
         
 
+def hand_rank(hand)
+end
 
         
 
