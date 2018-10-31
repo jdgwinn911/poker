@@ -409,6 +409,9 @@ class Rules
             end
         end
     end
+
+    def high_card(hand)
+    end
         
 
 

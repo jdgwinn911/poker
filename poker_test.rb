@@ -305,6 +305,17 @@ class Poker1 < Minitest::Test
     end
 
 
+    def test_that_high_card_function_works
+        temp = Hand.new
+        temp.add_dem_cards_to_da_hand(Cards.new("8", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("7", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("3", "C"))
+        temp.add_dem_cards_to_da_hand(Cards.new("7", "D"))
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "S"))
+        game = Rules.new
+        assert_equal("7", game.high_card(temp))
+    end
+
 
 
 
