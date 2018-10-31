@@ -375,6 +375,8 @@ class Rules
         false 
     end
 
+    def pair_high_card(hand)
+    end
         
 
 
