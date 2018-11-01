@@ -308,36 +308,43 @@ class Poker1 < Minitest::Test
     def test_that_high_card_function_works
         temp = Hand.new
         temp.add_dem_cards_to_da_hand(Cards.new("8", "H"))
-        temp.add_dem_cards_to_da_hand(Cards.new("7", "S"))
-        temp.add_dem_cards_to_da_hand(Cards.new("J", "C"))
+        temp.add_dem_cards_to_da_hand(Cards.new("3", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("4", "C"))
         temp.add_dem_cards_to_da_hand(Cards.new("7", "D"))
         temp.add_dem_cards_to_da_hand(Cards.new("2", "S"))
         game = Rules.new
-        assert_equal(11, game.high_card(temp))
+        assert_equal(8, game.high_card(temp))
     end
 
-    def test_that_crap_hands_have_rank
+    def test_that_hand_has_ranking_system
         temp = Hand.new
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "C"))
+        temp.add_dem_cards_to_da_hand(Cards.new("6", "H"))
         temp.add_dem_cards_to_da_hand(Cards.new("8", "H"))
-        temp.add_dem_cards_to_da_hand(Cards.new("7", "S"))
-        temp.add_dem_cards_to_da_hand(Cards.new("J", "C"))
-        temp.add_dem_cards_to_da_hand(Cards.new("7", "D"))
-        temp.add_dem_cards_to_da_hand(Cards.new("2", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("5", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("4", "H"))
         game = Rules.new
         assert_equal(0, game.hand_rank(temp))
     end
 
-    # def test_that_hand_has_ranking_system
-    #     temp = Hand.new
-    #     temp.add_dem_cards_to_da_hand(Cards.new("2", "H"))
-    #     temp.add_dem_cards_to_da_hand(Cards.new("3", "H"))
-    #     temp.add_dem_cards_to_da_hand(Cards.new("4", "H"))
-    #     temp.add_dem_cards_to_da_hand(Cards.new("5", "H"))
-    #     temp.add_dem_cards_to_da_hand(Cards.new("6", "H"))
-    #     game = Rules.new
-    #     assert_equal(11, game.high_card(temp))
-    # end
 
+    def test_that_there_are_two_hands
+        temp = Hand.new
+        temp2 = Hand.new
+        temp2.add_dem_cards_to_da_hand(Cards.new("2", "S"))
+        temp2.add_dem_cards_to_da_hand(Cards.new("6", "H"))
+        temp2.add_dem_cards_to_da_hand(Cards.new("8", "C"))
+        temp2.add_dem_cards_to_da_hand(Cards.new("5", "D"))
+        temp2.add_dem_cards_to_da_hand(Cards.new("4", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "C"))
+        temp.add_dem_cards_to_da_hand(Cards.new("3", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("8", "D"))
+        temp.add_dem_cards_to_da_hand(Cards.new("5", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("9", "S"))
+
+        game = Rules.new
+        assert_equal(0, game.play_game(temp))
+    end
 
 
 end

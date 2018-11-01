@@ -410,6 +410,7 @@ class Rules
         end
     end
 
+    
     def high_card(hand)
         temp_value = []
         temp_suit = []
@@ -421,9 +422,32 @@ class Rules
     end
         
 
-def hand_rank(hand)
-end
 
+    def hand_rank(hand)
+        rank = 0 
+        if straight_flush(hand) == true
+            rank = 8
+        elsif four_of_a_kind(hand) == true
+            rank = 7
+        elsif full_house(hand) == true
+            rank = 6 
+        elsif flush(hand) == true
+            rank = 5
+        elsif straight(hand) == true
+            rank = 4
+        elsif three_of_a_kind(hand) == true
+            rank = 3
+        elsif two_pair(hand) == true
+            rank = 2
+        elsif pair(hand) == true
+            rank = 1 
+        else
+             rank = 0
+        end
+    end
+
+    def play_game(hand)
+    end
         
 
 
