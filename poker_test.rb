@@ -282,7 +282,7 @@ class Poker1 < Minitest::Test
     end
 
 
-    def test_that_hand_is_pair
+    def test_that_hand_is_pair1
         temp = Hand.new
         temp.add_dem_cards_to_da_hand(Cards.new("7", "H"))
         temp.add_dem_cards_to_da_hand(Cards.new("5", "S"))
@@ -293,7 +293,7 @@ class Poker1 < Minitest::Test
         assert_equal(true, game.pair(temp))
     end
 
-    def test_that_two_pair_has_high_card_
+    def test_that_pair_has_high_card
         temp = Hand.new
         temp.add_dem_cards_to_da_hand(Cards.new("8", "H"))
         temp.add_dem_cards_to_da_hand(Cards.new("7", "S"))
@@ -324,7 +324,7 @@ class Poker1 < Minitest::Test
         temp.add_dem_cards_to_da_hand(Cards.new("5", "H"))
         temp.add_dem_cards_to_da_hand(Cards.new("4", "H"))
         game = Rules.new
-        assert_equal(0, game.hand_rank(temp).last())
+        assert_equal(0, game.hand_rank(temp))
     end
 
 
@@ -377,7 +377,7 @@ class Poker1 < Minitest::Test
     temp.add_dem_cards_to_da_hand(Cards.new("2", "H"))
     temp.add_dem_cards_to_da_hand(Cards.new("9", "S"))
     game = Rules.new
-    assert_equal("It's a tie", game.play_game(temp, temp2))
+    assert_equal("8", game.play_game(temp, temp2))
     end
 
 

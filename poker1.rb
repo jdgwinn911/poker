@@ -425,33 +425,37 @@ class Rules
 
     def hand_rank(hand)
         if straight_flush(hand) 
-            hand.add_dem_cards_to_da_hand(8)
+           return 8
         elsif four_of_a_kind(hand) 
-            hand.add_dem_cards_to_da_hand(7)
+            return 7
         elsif full_house(hand) 
-            hand.add_dem_cards_to_da_hand(6)
+            return 6
         elsif flush(hand) 
-            hand.add_dem_cards_to_da_hand(5)
+            return 5
         elsif straight(hand) 
-            hand.add_dem_cards_to_da_hand(4)
+            return 4
         elsif three_of_a_kind(hand) 
-            hand.add_dem_cards_to_da_hand(3)
+            return 3
         elsif two_pair(hand) 
-            hand.add_dem_cards_to_da_hand(2)
+            return 2
         elsif pair(hand) 
-            hand.add_dem_cards_to_da_hand(1)
+            return 1
         else
-             hand.add_dem_cards_to_da_hand(0)
+             return 0
         end
     end
 
     def play_game(hand1, hand2)
         player1 = hand_rank(hand1)
         player2 = hand_rank(hand2)
-        if player1.last() > player2.last()
+        if player1 > player2
             return "Player1 Won!"
-        elsif player2.last() > player1.last()
+        elsif player2 > player1
             return "Player2 Won!"
+        elsif player1 == player2
+            if player1 == 1
+               p pair_high_card(hand1, 1)
+            end
         end
     end
 
