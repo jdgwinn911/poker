@@ -324,11 +324,11 @@ class Poker1 < Minitest::Test
         temp.add_dem_cards_to_da_hand(Cards.new("5", "H"))
         temp.add_dem_cards_to_da_hand(Cards.new("4", "H"))
         game = Rules.new
-        assert_equal(0, game.hand_rank(temp))
+        assert_equal(0, game.hand_rank(temp).last())
     end
 
 
-    def test_that_there_are_two_hands
+    def test_that_there_is_a_winner
         temp = Hand.new
         temp2 = Hand.new
         temp2.add_dem_cards_to_da_hand(Cards.new("2", "S"))
@@ -339,11 +339,11 @@ class Poker1 < Minitest::Test
         temp.add_dem_cards_to_da_hand(Cards.new("2", "C"))
         temp.add_dem_cards_to_da_hand(Cards.new("3", "H"))
         temp.add_dem_cards_to_da_hand(Cards.new("8", "D"))
-        temp.add_dem_cards_to_da_hand(Cards.new("5", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("9", "H"))
         temp.add_dem_cards_to_da_hand(Cards.new("9", "S"))
 
         game = Rules.new
-        assert_equal(0, game.play_game(temp))
+        assert_equal(0, game.play_game(temp, temp2))
     end
 
 
