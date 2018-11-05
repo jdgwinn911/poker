@@ -375,7 +375,7 @@ class Rules
         false 
     end
 
-    def pair_high_card(hand, compares)
+    def pair_high_card(hand)
         temp_value = []
         temp_suit = []
         arr = []
@@ -395,16 +395,16 @@ class Rules
                 # temp_value.delete(k)
             end
             if arr.length == 2
-                if compares != 3
-                    return arr.sort()[-compares]
-                else 
-                    temp_value.each_with_index do |v, i|
-                        if arr [i] != temp_value[i]
-                            p v
-                            return v 
-                        end
-                    end
-                end
+                # if compares != 3
+                    return arr.sort().last()
+                # else 
+                #     temp_value.each_with_index do |v, i|
+                #         if arr [i] != temp_value[i]
+                #             p v
+                #             return v 
+                #         end
+                #     end
+                # end
                             
             end
         end
@@ -454,13 +454,55 @@ class Rules
             return "Player2 Won!"
         elsif player1 == player2
             if player1 == 1
-               p pair_high_card(hand1, 1)
+             var = pair_high_card(hand1).to_i
+             elsif player1 == 2
+                var = two_pair_high_card(hand1).to_i
+             elsif player1 == 3
+                var = three_of_a_kind_high_card(hand1).to_i
+            elsif player1 == 4
+                var = straight_high_card(hand1).to_i
+            elsif player1 == 5
+                var = high_card_flush(hand1).to_i
+            elsif player1 == 6
+                var = full_house_high_card(hand1).to_i
+            elsif player1 == 7
+                var = four_of_a_kind_high_card(hand1).to_i
+            elsif player1 == 8
+                var = high_card_strt_flush(hand1).to_i
+            end
+            if player2 == 1
+                var1 = pair_high_card(hand2).to_i
+                return "Player1 won!"
+            elsif player2 == 2 
+                var1 = two_pair_high_card(hand2).to_i
+                return "It's a tie!"
+            elsif player2 == 3
+                var1 = three_of_a_kind_high_card(hand2).to_i
+            elsif player2 == 4
+                var1 = four_of_a_kind_high_card(hand2).to_i
+            elsif player2 == 5
+                var1 = high_card_flush(hand2).to_i
+            elsif player2 == 6
+                var1 = full_house_high_card(hand2).to_i
+            elsif player2 == 7
+                var1 = four_of_a_kind_high_card(hand2).to_i
+            elsif player2 == 8
+                var1 = high_card_strt_flush(hand2).to_i
+            end
+            if var > var1
+                return "Player 1 won!"
+            elsif var1 > var
+                return "Player 2 won!"
+            else var = var1
+                return "it's a tie"
             end
         end
+
+
+
+
+
     end
-
-
-        
 
 
 

@@ -301,7 +301,7 @@ class Poker1 < Minitest::Test
         temp.add_dem_cards_to_da_hand(Cards.new("7", "D"))
         temp.add_dem_cards_to_da_hand(Cards.new("2", "S"))
         game = Rules.new
-        assert_equal("7", game.pair_high_card(temp, 1))
+        assert_equal("7", game.pair_high_card(temp))
     end
 
 
@@ -377,8 +377,41 @@ class Poker1 < Minitest::Test
     temp.add_dem_cards_to_da_hand(Cards.new("2", "H"))
     temp.add_dem_cards_to_da_hand(Cards.new("9", "S"))
     game = Rules.new
-    assert_equal("8", game.play_game(temp, temp2))
+    assert_equal("Player1 won!", game.play_game(temp, temp2))
     end
 
+    def test_that_there_is_a_winner4
+        temp = Hand.new
+        temp2 = Hand.new
+        temp2.add_dem_cards_to_da_hand(Cards.new("8", "S"))
+        temp2.add_dem_cards_to_da_hand(Cards.new("8", "D"))
+        temp2.add_dem_cards_to_da_hand(Cards.new("3", "S"))
+        temp2.add_dem_cards_to_da_hand(Cards.new("5", "S"))
+        temp2.add_dem_cards_to_da_hand(Cards.new("6", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("8", "C"))
+        temp.add_dem_cards_to_da_hand(Cards.new("8", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("3", "D"))
+        temp.add_dem_cards_to_da_hand(Cards.new("5", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("6", "C"))
+        game = Rules.new
+        assert_equal("Player1 won!", game.play_game(temp, temp2))
+    end
+
+    def test_for_another_winner
+    temp = Hand.new
+    temp2 = Hand.new
+    temp2.add_dem_cards_to_da_hand(Cards.new("4", "S"))
+    temp2.add_dem_cards_to_da_hand(Cards.new("5", "S"))
+    temp2.add_dem_cards_to_da_hand(Cards.new("6", "S"))
+    temp2.add_dem_cards_to_da_hand(Cards.new("7", "S"))
+    temp2.add_dem_cards_to_da_hand(Cards.new("8", "S"))
+    temp.add_dem_cards_to_da_hand(Cards.new("5", "C"))
+    temp.add_dem_cards_to_da_hand(Cards.new("6", "C"))
+    temp.add_dem_cards_to_da_hand(Cards.new("7", "C"))
+    temp.add_dem_cards_to_da_hand(Cards.new("8", "C"))
+    temp.add_dem_cards_to_da_hand(Cards.new("9", "C"))
+    game = Rules.new
+    assert_equal("Player2 won!", game.play_game(temp, temp2))
+    end
 
 end
