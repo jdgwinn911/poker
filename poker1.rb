@@ -450,9 +450,9 @@ class Rules
         player1 = hand_rank(hand1)
         player2 = hand_rank(hand2)
         if player1 > player2
-            return "Player1 Won!"
+            return "Player 1 Won!"
         elsif player2 > player1
-            return "Player2 Won!"
+            return "Player 2 Won!"
         elsif player1 == player2
             if player1 == 0
              var = high_card(hand1).to_i
@@ -495,9 +495,9 @@ class Rules
             var = var.to_i
             var1 = var1.to_i
             if var > var1
-                return "Player 1 won!"
+                return "Player 1 Won!"
             elsif var1 > var
-                return "Player 2 won!"
+                return "Player 2 Won!"
             else var == var1
                 return "it's a tie"
             end
@@ -509,9 +509,6 @@ class Rules
         player1 = z.deal_hand()
         player2 = z.deal_hand()
         play_game(player1, player2)
-        # high_card(player1)
-       
-
     end
 
     
