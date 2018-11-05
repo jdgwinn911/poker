@@ -62,6 +62,7 @@ class Deck
     end
 
     def deal_hand()
+        shuffle_deck()
       y = Hand.new
         5.times do 
          y.add_dem_cards_to_da_hand(@card_deck.pop())
@@ -453,11 +454,13 @@ class Rules
         elsif player2 > player1
             return "Player2 Won!"
         elsif player1 == player2
-            if player1 == 1
-             var = pair_high_card(hand1).to_i
-             elsif player1 == 2
+            if player1 == 0
+             var = high_card(hand1).to_i
+            elsif player1 == 1
+                var = pair_high_card(hand1).to_i
+            elsif player1 == 2
                 var = two_pair_high_card(hand1).to_i
-             elsif player1 == 3
+            elsif player1 == 3
                 var = three_of_a_kind_high_card(hand1).to_i
             elsif player1 == 4
                 var = straight_high_card(hand1).to_i
@@ -470,8 +473,10 @@ class Rules
             elsif player1 == 8
                 var = high_card_strt_flush(hand1).to_i
             end
-            if player2 == 1
-                var1 = pair_high_card(hand2).to_i
+            if player2 == 0
+                var1 = high_card(hand2).to_i
+            elsif player2 == 1
+                var1 = pair_high_card(hand2).to_i 
             elsif player2 == 2 
                 var1 = two_pair_high_card(hand2).to_i
             elsif player2 == 3
@@ -487,6 +492,8 @@ class Rules
             elsif player2 == 8
                 var1 = high_card_strt_flush(hand2).to_i
             end
+            var = var.to_i
+            var1 = var1.to_i
             if var > var1
                 return "Player 1 won!"
             elsif var1 > var
@@ -495,14 +502,17 @@ class Rules
                 return "it's a tie"
             end
         end
-
-
-
-
-
     end
 
+    def actual_game_play()
+        z = Deck.new
+        player1 = z.deal_hand()
+        player2 = z.deal_hand()
+        play_game(player1, player2)
+        # high_card(player1)
+       
 
+    end
 
     
 end

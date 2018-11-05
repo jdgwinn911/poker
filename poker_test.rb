@@ -429,8 +429,11 @@ class Poker1 < Minitest::Test
         temp.add_dem_cards_to_da_hand(Cards.new("9", "C"))
         game = Rules.new
         assert_equal("it's a tie", game.play_game(temp, temp2))
-        end
+    end
 
-    
+    def test_that_the_game_can_be_played
+        game = Rules.new 
+        assert_equal(7, game.actual_game_play())
+    end
 
 end
