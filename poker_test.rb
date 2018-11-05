@@ -414,4 +414,23 @@ class Poker1 < Minitest::Test
     assert_equal("Player 1 won!", game.play_game(temp, temp2))
     end
 
+    def test_for_another_winner_1
+        temp = Hand.new
+        temp2 = Hand.new
+        temp2.add_dem_cards_to_da_hand(Cards.new("5", "S"))
+        temp2.add_dem_cards_to_da_hand(Cards.new("6", "S"))
+        temp2.add_dem_cards_to_da_hand(Cards.new("7", "S"))
+        temp2.add_dem_cards_to_da_hand(Cards.new("8", "S"))
+        temp2.add_dem_cards_to_da_hand(Cards.new("9", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("5", "C"))
+        temp.add_dem_cards_to_da_hand(Cards.new("6", "C"))
+        temp.add_dem_cards_to_da_hand(Cards.new("7", "C"))
+        temp.add_dem_cards_to_da_hand(Cards.new("8", "C"))
+        temp.add_dem_cards_to_da_hand(Cards.new("9", "C"))
+        game = Rules.new
+        assert_equal("Player 1 won!", game.play_game(temp, temp2))
+        end
+
+    
+
 end

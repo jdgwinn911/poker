@@ -493,7 +493,7 @@ class Rules
                 return "Player 1 won!"
             elsif var1 > var
                 return "Player 2 won!"
-            else var = var1
+            else var == var1
                 return "it's a tie"
             end
         end
