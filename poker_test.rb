@@ -411,7 +411,7 @@ class Poker1 < Minitest::Test
     temp.add_dem_cards_to_da_hand(Cards.new("8", "C"))
     temp.add_dem_cards_to_da_hand(Cards.new("9", "C"))
     game = Rules.new
-    assert_equal("Player2 won!", game.play_game(temp, temp2))
+    assert_equal("Player 1 won!", game.play_game(temp, temp2))
     end
 
 end
