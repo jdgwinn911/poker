@@ -377,7 +377,7 @@ class Poker1 < Minitest::Test
     temp.add_dem_cards_to_da_hand(Cards.new("2", "H"))
     temp.add_dem_cards_to_da_hand(Cards.new("9", "S"))
     game = Rules.new
-    assert_equal("Player1 won!", game.play_game(temp, temp2))
+    assert_equal("Player 1 won!", game.play_game(temp, temp2))
     end
 
     def test_that_there_is_a_winner4
@@ -394,7 +394,7 @@ class Poker1 < Minitest::Test
         temp.add_dem_cards_to_da_hand(Cards.new("5", "H"))
         temp.add_dem_cards_to_da_hand(Cards.new("6", "C"))
         game = Rules.new
-        assert_equal("Player1 won!", game.play_game(temp, temp2))
+        assert_equal("it's a tie", game.play_game(temp, temp2))
     end
 
     def test_for_another_winner
@@ -428,7 +428,7 @@ class Poker1 < Minitest::Test
         temp.add_dem_cards_to_da_hand(Cards.new("8", "C"))
         temp.add_dem_cards_to_da_hand(Cards.new("9", "C"))
         game = Rules.new
-        assert_equal("Player 1 won!", game.play_game(temp, temp2))
+        assert_equal("it's a tie", game.play_game(temp, temp2))
         end
 
     

@@ -472,10 +472,8 @@ class Rules
             end
             if player2 == 1
                 var1 = pair_high_card(hand2).to_i
-                return "Player1 won!"
             elsif player2 == 2 
                 var1 = two_pair_high_card(hand2).to_i
-                return "It's a tie!"
             elsif player2 == 3
                 var1 = three_of_a_kind_high_card(hand2).to_i
             elsif player2 == 4
