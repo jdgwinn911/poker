@@ -1,8 +1,10 @@
 require 'sinatra'
-
+require_relative "poker1.rb"
 get '/' do
-  'Hello world i know nothing and i am okay with that'
+  erb :poker
 end
 
-#html submit
-#html text box
+post '/' do
+end
+
+

@@ -355,6 +355,48 @@ class Rules
 
     end
 
+    def two_pair_high_card2(hand)
+        temp_value = []
+        temp_suit = []
+        arr1 = []
+        hand.x.each_with_index do |v, i|
+            temp_value << v.card_value
+        end
+        temp_value.each do |val|
+            counter = 0
+            temp_value.each do |val2|
+                if val == val2 
+                    counter += 1
+                end
+            end
+            if counter == 2
+                arr1 << val
+                temp_value.delete(val)
+            end
+        end
+        return arr1.sort().first
+    end 
+
+    def two_pair_high_card3(hand)
+        temp_value = []
+        temp_suit = []
+        arr2 = []
+        hand.x.each_with_index do |v, i|
+            temp_value << v.card_value
+        end
+        temp_value.each do |val|
+            temp_value.each do |val2|
+                if val == val2 
+                    temp_value.delete(val)
+                end
+            end
+        end
+        return temp_value.last
+        p temp_value
+    end
+
+
+
     def pair(hand)
         temp_suit = []
         temp_value = []
@@ -392,21 +434,32 @@ class Rules
             end
             if counter == 2 
                 arr << k 
-                p k
-                # temp_value.delete(k)
             end
             if arr.length == 2
-                # if compares != 3
-                    return arr.sort().last()
-                # else 
-                #     temp_value.each_with_index do |v, i|
-                #         if arr [i] != temp_value[i]
-                #             p v
-                #             return v 
-                #         end
-                #     end
-                # end
-                            
+                return arr.sort().last()            
+            end
+        end
+    end
+
+    def pair_high_card2(hand)
+        temp_value = []
+        temp_suit = []
+        arr = []
+        hand.x.each_with_index do |v, i|
+            temp_value << v.card_value
+        end
+        temp_value.each do |k|
+            counter = 0
+            temp_value.each do |z|
+                if z == k 
+                    counter += 1
+                end
+            end
+            if counter == 2 
+                arr << k 
+            end
+            if arr.length == 2
+                return arr.sort().first            
             end
         end
     end
@@ -460,6 +513,10 @@ class Rules
                 var = pair_high_card(hand1).to_i
             elsif player1 == 2
                 var = two_pair_high_card(hand1).to_i
+            elsif player1 == 2 
+                var = two_pair_high_card2(hand1).to_i
+            elsif player1 == 2 
+                var = two_pair_high_card3(hand1). to_i
             elsif player1 == 3
                 var = three_of_a_kind_high_card(hand1).to_i
             elsif player1 == 4
@@ -479,6 +536,10 @@ class Rules
                 var1 = pair_high_card(hand2).to_i 
             elsif player2 == 2 
                 var1 = two_pair_high_card(hand2).to_i
+            elsif player2 == 2 
+                var = two_pair_high_card2(hand2).to_i
+            elsif player2 == 2 
+                var = two_pair_high_card3(hand2).to_i
             elsif player2 == 3
                 var1 = three_of_a_kind_high_card(hand2).to_i
             elsif player2 == 4
@@ -510,6 +571,7 @@ class Rules
         player2 = z.deal_hand()
         play_game(player1, player2)
     end
-
-    
 end
+
+game = Rules.new
+p game.actual_game_play()

@@ -1,0 +1,24 @@
+body {
+    background: url(/images/pokertable.jpg); 
+    background-repeat: no-repeat;
+    background-size: 100%;
+}
+
+.winnerbox {
+    background-color:#45a6e79d;
+    width: 300px;
+    border: 20px solid #ec020279;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: -5px -5px 10px;
+}
+.tentacle1 img {
+    float: right;
+    height: 50%;
+    width: 48%;
+}
+.tentacle2 img {
+    float: left;
+    height: 52%;
+    width: 45%;
+}
