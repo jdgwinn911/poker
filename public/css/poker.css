@@ -12,13 +12,44 @@ body {
     margin: 20px;
     box-shadow: -5px -5px 10px;
 }
-.tentacle1 img {
-    float: right;
-    height: 50%;
-    width: 48%;
+.tentacle1 {
+ 
+
 }
-.tentacle2 img {
-    float: left;
-    height: 52%;
-    width: 45%;
+.tentacle2 {
+    
+}
+
+.numbers2 {
+    position: absolute;
+    top: 6%;
+    left: 76%;
+    color: rgb(255, 30, 0);
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.numbers1 {
+    position: absolute;
+    top: 6%;
+    left: 11%;
+    color: white;
+    color: rgb(255, 30, 0);
+    font-size: 1rem;
+    text-transform: uppercase;
+}
+
+a:link, a:visited {
+    background-color: cadetblue;
+    color: yellow;
+    padding: 14px 25px;
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+    border: 20px solid #ec020279;
+}
+
+a:hover, a:active {
+    background-color: red;
 }

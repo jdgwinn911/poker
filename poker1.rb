@@ -564,14 +564,12 @@ class Rules
             end
         end
     end
-
     def actual_game_play()
         z = Deck.new
-        player1 = z.deal_hand()
-        player2 = z.deal_hand()
-        play_game(player1, player2)
+        @player1 = z.deal_hand()
+        @player2 = z.deal_hand()
+        play_game(@player1, @player2)
     end
+    attr_reader :player1
+    attr_reader :player2
 end
-
-game = Rules.new
-p game.actual_game_play()
