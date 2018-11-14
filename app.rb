@@ -6,7 +6,7 @@ get '/' do
 end
 
 post '/poker' do
-
+redirect '/'
 
 end
 

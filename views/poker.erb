@@ -3,246 +3,61 @@
         <script src="/js/poker.js"></script>
         <link rel="stylesheet" type="text/css" href="css/poker.css">
     </head>
-    <form method="post" action="poker">
+    <form method="post" action="/poker">
     <center>
     <font color="pink"><h2>Welcome to DeMo's Poker</h2></font>
     <body>
         <div class="winnerbox">
         <%game = Rules.new%>
-        <font color="yellow"><%=game.actual_game_play()%></font>
+        <%game_result = game.actual_game_play()%>
+        <%if game_result == "Player 1 Won!" %>
+        <font color="yellow">Player 1 Won!</font>
+        <br><font color="yellow"><%=game.why_win(game.player1)%></font>
+        <%elsif game_result == "Player 2 Won!"%>
+        <font color="yellow">Player 2 Won!</font>
+        <br><font color="yellow"><%=game.why_win(game.player2)%></font>
+        <%elsif game_result == "it's a tie!"%>
+        <font color="yellow">it's a tie!</font>
+        <%# <%game.player1.x.each do |v|%> 
+        <%# <br><font color="yellow"><%=v.card_name%></font>
+        <%# <%end%> 
+        <%# <%game.player2.x.each do |v|%> 
+        <%# <br><font color="yellow"><%=v.card_name%></font> 
+        <%# <%end %> 
+        <%end%>
         </div><br><br>
 
         <div class="tentacle1" name="tent1">
+        
         </div>
+        <input type="submit" id="poker" value="Play Again">
         <div class="numbers1">
-        <h2>Player1</h2>
-             <%game.player1.x.each_with_index do |v, index|%>
-            <div id="<%=index%>">
-            <%# <%=v.card_name%> 
-            <%if v.card_name == "2D"%>
-            <img width="80" height="100" src=/images/2D.png>
-            <%elsif v.card_name == "2H"%>
-            <img width="80" height="100" src=/images/2H.png>
-            <%elsif v.card_name == "2C"%>
-            <img width="80" height="100" src=/images/2C.png>
-            <%elsif v.card_name == "2S"%>
-            <img width="80" height="100" src=/images/2S.png>
-            <%elsif v.card_name == "3D"%>
-            <img width="80" height="100" src=/images/3D.png>
-            <%elsif v.card_name == "3H"%>
-            <img width="80" height="100" src=/images/3H.png>
-            <%elsif v.card_name == "3C"%>
-            <img width="80" height="100" src=/images/3C.png>
-            <%elsif v.card_name == "3S"%>
-            <img width="80" height="100" src=/images/3S.png>
-            <%elsif v.card_name == "4D"%>
-            <img width="80" height="100" src=/images/4D.png>
-            <%elsif v.card_name == "4H"%>
-            <img width="80" height="100" src=/images/4H.png>
-            <%elsif v.card_name == "4C"%>
-            <img width="80" height="100" src=/images/4C.png>
-            <%elsif v.card_name == "4S"%>
-            <img width="80" height="100" src=/images/4S.png>
-            <%elsif v.card_name == "5D"%>
-            <img width="80" height="100" src=/images/5D.png>
-            <%elsif v.card_name == "5H"%>
-            <img width="80" height="100" src=/images/5H.png>
-            <%elsif v.card_name == "5C"%>
-            <img width="80" height="100" src=/images/5C.png>
-            <%elsif v.card_name == "5S"%>
-            <img width="80" height="100" src=/images/5S.png>
-            <%elsif v.card_name == "6D"%>
-            <img width="80" height="100" src=/images/6D.png>
-            <%elsif v.card_name == "6H"%>
-            <img width="80" height="100" src=/images/6H.png>
-            <%elsif v.card_name == "6C"%>
-            <img width="80" height="100" src=/images/6C.png>
-            <%elsif v.card_name == "6S"%>
-            <img width="80" height="100" src=/images/6S.png>
-            <%elsif v.card_name == "7D"%>
-            <img width="80" height="100" src=/images/7D.png>
-            <%elsif v.card_name == "7H"%>
-            <img width="80" height="100" src=/images/7H.png>
-            <%elsif v.card_name == "7C"%>
-            <img width="80" height="100" src=/images/7C.png>
-            <%elsif v.card_name == "7S"%>
-            <img width="80" height="100" src=/images/7S.png>
-            <%elsif v.card_name == "8D"%>
-            <img width="80" height="100" src=/images/8D.png>
-            <%elsif v.card_name == "8H"%>
-            <img width="80" height="100" src=/images/8H.png>
-            <%elsif v.card_name == "8C"%>
-            <img width="80" height="100" src=/images/8C.png>
-            <%elsif v.card_name == "8S"%>
-            <img width="80" height="100" src=/images/8S.png>
-            <%elsif v.card_name == "9D"%>
-            <img width="80" height="100" src=/images/9D.png>
-            <%elsif v.card_name == "9H"%>
-            <img width="80" height="100" src=/images/9H.png>
-            <%elsif v.card_name == "9C"%>
-            <img width="80" height="100" src=/images/9C.png>
-            <%elsif v.card_name == "9S"%>
-            <img width="80" height="100" src=/images/9S.png>
-            <%elsif v.card_name == "TD"%>
-            <img width="80" height="100" src=/images/10D.png>
-            <%elsif v.card_name == "TH"%>
-            <img width="80" height="100" src=/images/10H.png>
-            <%elsif v.card_name == "TC"%>
-            <img width="80" height="100" src=/images/10C.png>
-            <%elsif v.card_name == "TS"%>
-            <img width="80" height="100" src=/images/10S.png>
-            <%elsif v.card_name == "JD"%>
-            <img width="80" height="100" src=/images/JD.png>
-            <%elsif v.card_name == "JH"%>
-            <img width="80" height="100" src=/images/JH.png>
-            <%elsif v.card_name == "JC"%>
-            <img width="80" height="100" src=/images/JC.png>
-            <%elsif v.card_name == "JS"%>
-            <img width="80" height="100" src=/images/JS.png>
-            <%elsif v.card_name == "QD"%>
-            <img width="80" height="100" src=/images/QD.png>
-            <%elsif v.card_name == "QH"%>
-            <img width="80" height="100" src=/images/QH.png>
-            <%elsif v.card_name == "QC"%>
-            <img width="80" height="100" src=/images/QC.png>
-            <%elsif v.card_name == "QS"%>
-            <img width="80" height="100" src=/images/QS.png>
-            <%elsif v.card_name == "KD"%>
-            <img width="80" height="100" src=/images/KD.png>
-            <%elsif v.card_name == "KH"%>
-            <img width="80" height="100" src=/images/KH.png>
-            <%elsif v.card_name == "KC"%>
-            <img width="80" height="100" src=/images/KC.png>
-            <%elsif v.card_name == "KS"%>
-            <img width="80" height="100" src=/images/KS.png>
-            <%elsif v.card_name == "AD"%>
-            <img width="80" height="100" src=/images/AD.png>
-            <%elsif v.card_name == "AH"%>
-            <img width="80" height="100" src=/images/AH.png>
-            <%elsif v.card_name == "AC"%>
-            <img width="80" height="100" src=/images/AC.png>
-            <%elsif v.card_name == "AS"%>
-            <img width="80" height="100" src=/images/AS.png>
+            <h2>Player1</h2>
+            <%game.player1.x.each_with_index do |v, index|%>
+                <div id="<%=index%>">
+                <%# <%=v.card_name%> 
+                <img class="card" width="80" height="100" src="/images/<%=v.card_name%>.png">
+                </div>
             <%end%>
-            </div>
-            <%end%>
+        </div>
+        <div class="pokerfordums">
+        <h3><a href="http://www.bluffnakedpoker.com/PDF/Poker%20for%20Dummies.pdf">Link to Poker for Dummies</a></h3>
+        </div>
+        <div class="tentacle2">
         </div>
         <div class="numbers2">
          <h2>Player2</h2>
             <%game.player2.x.each_with_index do |v, index1|%>
-            <div id="<%=index1%>">
-             <%if v.card_name == "2D"%>
-            <img width="80" height="100" src=/images/2D.png>
-            <%elsif v.card_name == "2H"%>
-            <img width="80" height="100" src=/images/2H.png>
-            <%elsif v.card_name == "2C"%>
-            <img width="80" height="100" src=/images/2C.png>
-            <%elsif v.card_name == "2S"%>
-            <img width="80" height="100" src=/images/2S.png>
-            <%elsif v.card_name == "3D"%>
-            <img width="80" height="100" src=/images/3D.png>
-            <%elsif v.card_name == "3H"%>
-            <img width="80" height="100" src=/images/3H.png>
-            <%elsif v.card_name == "3C"%>
-            <img width="80" height="100" src=/images/3C.png>
-            <%elsif v.card_name == "3S"%>
-            <img width="80" height="100" src=/images/3S.png>
-            <%elsif v.card_name == "4D"%>
-            <img width="80" height="100" src=/images/4D.png>
-            <%elsif v.card_name == "4H"%>
-            <img width="80" height="100" src=/images/4H.png>
-            <%elsif v.card_name == "4C"%>
-            <img width="80" height="100" src=/images/4C.png>
-            <%elsif v.card_name == "4S"%>
-            <img width="80" height="100" src=/images/4S.png>
-            <%elsif v.card_name == "5D"%>
-            <img width="80" height="100" src=/images/5D.png>
-            <%elsif v.card_name == "5H"%>
-            <img width="80" height="100" src=/images/5H.png>
-            <%elsif v.card_name == "5C"%>
-            <img width="80" height="100" src=/images/5C.png>
-            <%elsif v.card_name == "5S"%>
-            <img width="80" height="100" src=/images/5S.png>
-            <%elsif v.card_name == "6D"%>
-            <img width="80" height="100" src=/images/6D.png>
-            <%elsif v.card_name == "6H"%>
-            <img width="80" height="100" src=/images/6H.png>
-            <%elsif v.card_name == "6C"%>
-            <img width="80" height="100" src=/images/6C.png>
-            <%elsif v.card_name == "6S"%>
-            <img width="80" height="100" src=/images/6S.png>
-            <%elsif v.card_name == "7D"%>
-            <img width="80" height="100" src=/images/7D.png>
-            <%elsif v.card_name == "7H"%>
-            <img width="80" height="100" src=/images/7H.png>
-            <%elsif v.card_name == "7C"%>
-            <img width="80" height="100" src=/images/7C.png>
-            <%elsif v.card_name == "7S"%>
-            <img width="80" height="100" src=/images/7S.png>
-            <%elsif v.card_name == "8D"%>
-            <img width="80" height="100" src=/images/8D.png>
-            <%elsif v.card_name == "8H"%>
-            <img width="80" height="100" src=/images/8H.png>
-            <%elsif v.card_name == "8C"%>
-            <img width="80" height="100" src=/images/8C.png>
-            <%elsif v.card_name == "8S"%>
-            <img width="80" height="100" src=/images/8S.png>
-            <%elsif v.card_name == "9D"%>
-            <img width="80" height="100" src=/images/9D.png>
-            <%elsif v.card_name == "9H"%>
-            <img width="80" height="100" src=/images/9H.png>
-            <%elsif v.card_name == "9C"%>
-            <img width="80" height="100" src=/images/9C.png>
-            <%elsif v.card_name == "9S"%>
-            <img width="80" height="100" src=/images/9S.png>
-            <%elsif v.card_name == "TD"%>
-            <img width="80" height="100" src=/images/10D.png>
-            <%elsif v.card_name == "TH"%>
-            <img width="80" height="100" src=/images/10H.png>
-            <%elsif v.card_name == "TC"%>
-            <img width="80" height="100" src=/images/10C.png>
-            <%elsif v.card_name == "TS"%>
-            <img width="80" height="100" src=/images/10S.png>
-            <%elsif v.card_name == "JD"%>
-            <img width="80" height="100" src=/images/JD.png>
-            <%elsif v.card_name == "JH"%>
-            <img width="80" height="100" src=/images/JH.png>
-            <%elsif v.card_name == "JC"%>
-            <img width="80" height="100" src=/images/JC.png>
-            <%elsif v.card_name == "JS"%>
-            <img width="80" height="100" src=/images/JS.png>
-            <%elsif v.card_name == "QD"%>
-            <img width="80" height="100" src=/images/QD.png>
-            <%elsif v.card_name == "QH"%>
-            <img width="80" height="100" src=/images/QH.png>
-            <%elsif v.card_name == "QC"%>
-            <img width="80" height="100" src=/images/QC.png>
-            <%elsif v.card_name == "QS"%>
-            <img width="80" height="100" src=/images/QS.png>
-            <%elsif v.card_name == "KD"%>
-            <img width="80" height="100" src=/images/KD.png>
-            <%elsif v.card_name == "KH"%>
-            <img width="80" height="100" src=/images/KH.png>
-            <%elsif v.card_name == "KC"%>
-            <img width="80" height="100" src=/images/KC.png>
-            <%elsif v.card_name == "KS"%>
-            <img width="80" height="100" src=/images/KS.png>
-            <%elsif v.card_name == "AD"%>
-            <img width="80" height="100" src=/images/AD.png>
-            <%elsif v.card_name == "AH"%>
-            <img width="80" height="100" src=/images/AH.png>
-            <%elsif v.card_name == "AC"%>
-            <img width="80" height="100" src=/images/AC.png>
-            <%elsif v.card_name == "AS"%>
-            <img width="80" height="100" src=/images/AS.png>
-            <%end%>
-            </div>        
-            <%end%>
+                <div id="<%=index1%>">
+                <img class="card" width="80" height="100" src="/images/<%=v.card_name%>.png">
+           <%end%>
         </div>
-        
-        <a href='/'>Play Again</a>
-    
+    <%# cthulhu mouse pointer %>
+    <style type="text/css">body { cursor: url('data:image/x-icon;base64,AAACAAEAICAAAAEAAQCoCAAAFgAAACgAAAAgAAAAQAAAAAEACAAAAAAAAAQAAAAAAAAAAAAAAAEAAAAAAAABRysAAAAAADKmeQAhV0IAEl5AAEarhAASPSwAFDAlACNcRQAfh18AI08+ABmwdgA0lG4AIVdBAA9cPAAQQi4APrOGADCKZgAQMCMAGnBPACtuVAAJJhsAF1c+ACxwVgAmmW0AHEIzABlUPQAmnnAAGEUzABRcQAAKIMkAFmFDAD+WdAAnkWgAKUU6ABNcPwAUTzgAAggFAEF6YwA2tYQAFDsrADPMkQA2gGMAJ3paABcrIwA1j2wAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEBAQEBAQEBAAAPAQABAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBASQkAQEaAAENJCQAAQEBAQEBAQEBAQEBAQEBAQEBAQEBDQEBARoBAQ0BAQABAQEBAQEBAQEBAQEBAQEBAQEBAQENAQEaGgEBFwEBAQ8BAQEBAQ8BAQEBAQEBAQEBAQEBAQ0XGhoBAQEXFwEBAQEkJAAAAQEBAQEBAQEBAQEcHAEBARcaGhoBARcXAQEBAQ0BAQEBAQEBAQEBAQEnJycBAQEBGhoaFxcBFxcBAQEBDRcBAQEBAQEBAQEBARgYGAEBHAEaGgEXFxcBFxcBAQEXFxcBAQEBHBwBAQEbGx0BAScnARoaAQEjIwEjIwEBAQEXFwEBAQEBJycBAR0dHQEBISEBGhoaASMjASMjAQEBFxcXAQEBAQEYGAEdFxwXARcXIQEBGhoaIyMBIyMjARcjIwEBHBwnAS0YGxcXHBcBFxcXAQErKxcMIwEXDCMBIyMjAQEBJycXIRkcFxcXFxccFw4OARImCCYaGiYmGisjEgEBASEhISEXGRwXFxwXFxwXDg4oEiMSJhImEiYrFwgSKA4OFxccFxcXHBcXHBccHBcODigSCBIICAgICAgmCBIoDg4XFxcXFxccFxccFxwXFw4OKBIKCAgICBIIEggXEigOHBcXHBcXFxwXHBcXHBcXFw4BAQQsIggmCCYiLAkBAQ4cFxccFxccHBcXFxcXFxcOAQEKLCwsFQcHFSIsLB8BARcXFxcXFxcXFxwXFxcXFwEBASwsHh4sJSUsHh4sHwEBARcXHBcXHBcXFxcXHBcBAQEBCiwsLCwVFSwsLCwsAQEBARccFysUFwEWFysrKwEBAQEDBgYGIgQEBAYGBAkBAQEBKysrKxYBAQErKysrAQEBAQgICAgEAwQEBAgICQEBAQEcBQUWAQEBAQECAgICAQEBBBERERETESAREQQJAQEBAgICBQEBAQEBAQECAhwcHAEgICoQEBAQECAgCSABHBwcAgIBAQEBAQEBAQEBAQEBAQEJECkpKSkQCwkJAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEpKSkpKSkpKQEBAQEBAQEBAQEBAQEsAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBASwsAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBLCwsAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEsLCwsAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBASwsLCwsAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAQEBAf+L////Mh///3bf//9m77//Dnh/84Z7/8eCef/GkTjzjJk8+YyJOPkIwRGICMERwABAA4AAAAAAAAAAAAAAAAAAYAYAAMADAAHAA4ADwAPAg8ADwcPAA8PhwAOH8EACD//gB///8A//v////5////+P////h////4P/////////'), auto; }</style>
     </form>
+    <div class="cbook">
+     <a href="https://www.globalgreyebooks.com/call-of-cthulhu-ebook/">Link to Call of Cthulhu E-book</a>
+     </div>
      </center>
    </body>
 

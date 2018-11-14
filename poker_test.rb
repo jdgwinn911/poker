@@ -326,7 +326,7 @@ class Poker1 < Minitest::Test
         assert_equal("7", game.pair_high_card(temp))
     end
 
-    def test_that_pair_has_high_card
+    def test_that_pair_has_high_card2
         temp = Hand.new
         temp.add_dem_cards_to_da_hand(Cards.new("8", "H"))
         temp.add_dem_cards_to_da_hand(Cards.new("7", "S"))
@@ -337,6 +337,16 @@ class Poker1 < Minitest::Test
         assert_equal("7", game.pair_high_card2(temp))
     end
 
+    def test_that_pair_has_high_card3
+        temp = Hand.new
+        temp.add_dem_cards_to_da_hand(Cards.new("8", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("7", "S"))
+        temp.add_dem_cards_to_da_hand(Cards.new("3", "C"))
+        temp.add_dem_cards_to_da_hand(Cards.new("7", "D"))
+        temp.add_dem_cards_to_da_hand(Cards.new("2", "S"))
+        game = Rules.new
+        assert_equal(["2", "3", "8"], game.pair_high_card3(temp))
+    end
 
     def test_that_high_card_function_works
         temp = Hand.new
@@ -427,7 +437,7 @@ class Poker1 < Minitest::Test
         temp.add_dem_cards_to_da_hand(Cards.new("5", "H"))
         temp.add_dem_cards_to_da_hand(Cards.new("6", "C"))
         game = Rules.new
-        assert_equal("it's a tie", game.play_game(temp, temp2))
+        assert_equal("it's a tie!", game.play_game(temp, temp2))
     end
 
     def test_for_another_winner
@@ -461,12 +471,23 @@ class Poker1 < Minitest::Test
         temp.add_dem_cards_to_da_hand(Cards.new("8", "C"))
         temp.add_dem_cards_to_da_hand(Cards.new("9", "C"))
         game = Rules.new
-        assert_equal("it's a tie", game.play_game(temp, temp2))
+        assert_equal("it's a tie!", game.play_game(temp, temp2))
     end
 
     def test_that_the_game_can_be_played
         game = Rules.new 
         assert_equal("Player 1 Won!", game.actual_game_play())
+    end
+
+    def test_that_my_stuff_is_working_right
+        temp = Hand.new
+        temp.add_dem_cards_to_da_hand(Cards.new("9", "C"))
+        temp.add_dem_cards_to_da_hand(Cards.new("5", "C"))
+        temp.add_dem_cards_to_da_hand(Cards.new("K", "D"))
+        temp.add_dem_cards_to_da_hand(Cards.new("K", "H"))
+        temp.add_dem_cards_to_da_hand(Cards.new("K", "C"))
+        game = Rules.new
+        assert_equal(true, game.three_of_a_kind(temp))
     end
 
 end

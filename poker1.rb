@@ -69,16 +69,13 @@ class Deck
         end
         return y 
     end
-
-
-
     attr_reader :card_deck
 end
 
 class Rules
     def initialize()
     end
-
+    
     def array_increments_by?(step, array)
         sorted = array.sort
         lastNum = sorted[0]
@@ -131,8 +128,6 @@ class Rules
             end
             if counter == 4
                 return true
-            else
-                 break
             end
         end
         false
@@ -167,8 +162,6 @@ class Rules
                 temp_value.delete(v)
                 if temp_value[0] == temp_value[1]
                     return true
-                else 
-                    break
                 end
             end
         end
@@ -265,8 +258,6 @@ class Rules
             end
             if counter == 3
                 return true
-            else
-                 break
             end
         end
         false
@@ -459,9 +450,29 @@ class Rules
                 arr << k 
             end
             if arr.length == 2
-                return arr.sort().first            
+                return arr.sort().first()            
             end
         end
+    end
+
+    def pair_high_card3(hand)
+        temp_value = []
+        temp_suit = []
+        hand.x.each_with_index do |v, i|
+            temp_value << v.card_value
+        end
+        temp_value.each do |k|
+            counter = 0
+            temp_value.each do |z|
+                if z == k 
+                    counter += 1
+                end
+            end
+            if counter == 2 
+                temp_value.delete(k)
+            end            
+        end
+        return temp_value.sort()
     end
 
     
@@ -494,8 +505,8 @@ class Rules
             return 2
         elsif pair(hand) 
             return 1
-        else
-             return 0
+        else high_card(hand)
+            return 0
         end
     end
 
@@ -509,10 +520,38 @@ class Rules
         elsif player1 == player2
             if player1 == 0
              var = high_card(hand1).to_i
+             if player2 == 0
+                var1 = high_card(hand2).to_i
+                temp1 = []
+                temp2 = []
+                hand1.x.each do |v|
+                    temp1 << v.card_value
+                end
+                hand2.x.each do |v|
+                    temp2 << v.card_value
+                end
+                temp1 = temp1.sort!()
+                temp2 = temp2.sort!()
+                while var == var1
+                    if temp1.length == 0 || temp2.length == 0
+                        return "it's a tie!"
+                    end
+                    temp1.pop()
+                    temp2.pop()
+                    var = temp1.last()
+                    var1 = temp2.last()
+                end
+            end
+            elsif player1 == player2 
+                var = high_card(hand1).to_i
             elsif player1 == 1
                 var = pair_high_card(hand1).to_i
+            elsif player1 == 1
+                var = pair_high_card2(hand1).to_i
+            elsif player1 == 1
+                var = pair_high_card3(hand1).to_i
             elsif player1 == 2
-                var = two_pair_high_card(hand1).to_i
+                var = two_pair_high_card(hand1, compares).to_i
             elsif player1 == 2 
                 var = two_pair_high_card2(hand1).to_i
             elsif player1 == 2 
@@ -533,9 +572,13 @@ class Rules
             if player2 == 0
                 var1 = high_card(hand2).to_i
             elsif player2 == 1
-                var1 = pair_high_card(hand2).to_i 
+                var1 = pair_high_card(hand2).to_i
+            elsif player2 == 1
+                var1 = pair_high_card2(hand2).to_i
+            elsif player2 == 1
+                var1 = pair_high_card3(hand2).to_i
             elsif player2 == 2 
-                var1 = two_pair_high_card(hand2).to_i
+                var1 = two_pair_high_card(hand2,compares).to_i
             elsif player2 == 2 
                 var = two_pair_high_card2(hand2).to_i
             elsif player2 == 2 
@@ -543,7 +586,7 @@ class Rules
             elsif player2 == 3
                 var1 = three_of_a_kind_high_card(hand2).to_i
             elsif player2 == 4
-                var1 = four_of_a_kind_high_card(hand2).to_i
+                var1 = straight_high_card(hand2).to_i
             elsif player2 == 5
                 var1 = high_card_flush(hand2).to_i
             elsif player2 == 6
@@ -559,9 +602,33 @@ class Rules
                 return "Player 1 Won!"
             elsif var1 > var
                 return "Player 2 Won!"
-            else var == var1
-                return "it's a tie"
+            else
+                return "it's a tie!"
             end
+        end
+    end
+
+    def why_win(hand)
+        if hand_rank(hand) == 8
+            return "Straight Flush"
+        elsif hand_rank(hand) == 7
+            return "Four of a kind"
+        elsif hand_rank(hand) == 6
+            return "Full House"
+        elsif hand_rank(hand) == 5
+            return "Flush"
+        elsif hand_rank(hand) == 4
+            return "Straight"
+        elsif hand_rank(hand) == 3
+            return "Three of a kind"
+        elsif hand_rank(hand) == 2
+            return "Two pair"
+        elsif hand_rank(hand) == 1
+            return "Pair"
+        elsif hand_rank(hand) == 0
+            return "Crappy hand"
+        else 
+            return hand_rank(hand)
         end
     end
     def actual_game_play()
@@ -573,3 +640,14 @@ class Rules
     attr_reader :player1
     attr_reader :player2
 end
+
+# game = Rules.new
+# p game.actual_game_play()
+# p "player 1 hand is #{game.why_win(game.player1)}"
+# game.player1.x.each do |v|
+#     p "player1's cards are #{v.card_name}"
+# end
+# p "player 2 hand is #{game.why_win(game.player2)}"
+# game.player2.x.each do |v|
+#     p "player2's cards are #{v.card_name}"
+# end

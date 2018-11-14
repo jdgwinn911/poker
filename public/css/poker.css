@@ -1,9 +1,23 @@
 body {
-    background: url(/images/pokertable.jpg); 
+    background: url(/images/lovecraft1.jpg); 
     background-repeat: no-repeat;
     background-size: 100%;
+    overflow:hidden;
 }
 
+#poker{
+    position: relative;
+    top: -12px;
+    left: -1px;
+    background: #3083bb;
+    color: yellow;
+    border-style: outset;
+    border-color: #0066A2;
+    height: 50px;
+    width: 100px;
+    font: bold 15px arial, sans-serif;
+    text-shadow: none;
+}
 .winnerbox {
     background-color:#45a6e79d;
     width: 300px;
@@ -13,13 +27,39 @@ body {
     box-shadow: -5px -5px 10px;
 }
 .tentacle1 {
- 
+    background-image: url(/images/tentacle1.png);
+    background-size: cover;
+    display: block;
+    width: 64%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 83%;
+    transform: rotate(-60deg);
+    position: absolute;
+    top: 30%;
+    left: -16%;
+    z-index: -1;
+
 
 }
 .tentacle2 {
-    
+    background-image: url(/images/tentacle1.png);
+    background-size: cover;
+    display: block;
+    width: 64%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 83%;
+    transform: rotate(-60deg);
+    position: absolute;
+    top: 30%;
+    right: -14%;
 }
 
+.cards {
+    margin:2px 0;
+
+}
 .numbers2 {
     position: absolute;
     top: 6%;
@@ -40,15 +80,34 @@ body {
     text-transform: uppercase;
 }
 
-a:link, a:visited {
+.pokerfordums a:link, a:visited {
     background-color: cadetblue;
     color: yellow;
     padding: 14px 25px;
-    text-align: center; 
+    text-align: center;
     text-decoration: none;
     display: inline-block;
-    border: 20px solid #ec020279;
+    border: 17px solid #ec020279;
+    width: 18%;
+    position: absolute;
+    top: 87%;
+    left: 20%;
 }
+
+.cbook a:link, a:visited {
+    background-color: cadetblue;
+    color: yellow;
+    padding: 14px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border: 17px solid #ec020279;
+    width: 310%;
+    position: absolute;
+    top: 90%;
+    left: -388%;
+}
+
 
 a:hover, a:active {
     background-color: red;
