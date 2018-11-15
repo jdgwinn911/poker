@@ -1,4 +1,3 @@
-# cards,hand,deck,game rules
 class Cards
     def initialize(number,shapes)
         @card_name = "#{number}#{shapes}"
@@ -75,7 +74,7 @@ end
 class Rules
     def initialize()
     end
-    
+
     def array_increments_by?(step, array)
         sorted = array.sort
         lastNum = sorted[0]
@@ -383,7 +382,6 @@ class Rules
             end
         end
         return temp_value.last
-        p temp_value
     end
 
 
@@ -517,16 +515,15 @@ class Rules
             return "Player 1 Won!"
         elsif player2 > player1
             return "Player 2 Won!"
-        elsif player1 == player2
-            if player1 == 0
+        elsif player1 == player2 && player1 == 0
              var = high_card(hand1).to_i
-             if player2 == 0
-                var1 = high_card(hand2).to_i
-                temp1 = []
-                temp2 = []
-                hand1.x.each do |v|
-                    temp1 << v.card_value
-                end
+        elsif player2 == 0
+            var1 = high_card(hand2).to_i
+            temp1 = []
+            temp2 = []
+            hand1.x.each do |v|
+                temp1 << v.card_value
+            end
                 hand2.x.each do |v|
                     temp2 << v.card_value
                 end
@@ -541,7 +538,6 @@ class Rules
                     var = temp1.last()
                     var1 = temp2.last()
                 end
-            end
             elsif player1 == player2 
                 var = high_card(hand1).to_i
             elsif player1 == 1
@@ -606,9 +602,8 @@ class Rules
                 return "it's a tie!"
             end
         end
-    end
 
-    def why_win(hand)
+        def why_win(hand)
         if hand_rank(hand) == 8
             return "Straight Flush"
         elsif hand_rank(hand) == 7
