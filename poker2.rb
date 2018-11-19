@@ -38,13 +38,21 @@ end
 class Hand < Deck
     def initialize()
     end
-    d = Deck.new
-    white = d.deal_hand()
-    puts "------"
-    black = d.deal_hand()
+    def ranky()
+    
+    end
+   
 
-    # attr_reader :deck
-    # attr_reader :shuffled
+    def whats_the_hand(hand)
+
+
+    end
+
+    # d = Deck.new
+    # white = d.deal_hand()
+    # puts "------"
+    # black = d.deal_hand()
+
 end
 
 
