@@ -1,42 +1,51 @@
-class Card
-    def initialize()
+class Cards
+    def initialize(value, suit)
     end
     CARDVAL = %i[2 3 4 5 6 7 8 9 10 11 12 13 14]
     CARDSUIT = %i[spades clubs diamonds hearts]
-    Card = Struct.new(:number, :shape) do
+    Card = Struct.new(:value, :suit) do
         def to_s() # redefine to_s  to bring back cards as strings
-            "#{number.capitalize} of #{shape.capitalize}"
+            "#{value.capitalize} of #{suit.capitalize}"
         end
         def ==(other) # avoiding dynamic constant error by looking value instead of object id
-            self.number == other.number &&
-            self.shape == other.shape
+            self.value == other.value &&
+            self.suit == other.suit
         end
     end
 end
 
 
-
-class Deck < Card
+class Deck < Cards
     def initialize()
-    @deck = CARDVAL.flat_map { |number| CARDSUIT.map{|shape| Card.new(number, shape)}} 
+    @deck = CARDVAL.flat_map { |value| CARDSUIT.map{|suit| Card.new(value, suit)}} 
      @shuffled = @deck.shuffle
     end
+
+    def deal_card(card)
+        @hand = []
+        @hand << card
+    end
+
     
     def deal_hand()
-     hand = []
      5.times do
-        hand << @shuffled.pop().to_s
+        deal_card(@shuffled.pop().to_s)
      end
-     puts hand
+     puts @hand
     end
     attr_reader :deck
     attr_reader :shuffled
+    attr_reader :hand
 end
 
 class Hand < Deck
     def initialize()
     end
-    
+
+    def phand(hand)
+        puts "#{hand}"
+    end
+
     ranks = {
         straight_flush:  8,
         four_of_a_kind:  7,
@@ -48,17 +57,16 @@ class Hand < Deck
         pair:            1
     }.freeze
 
-    def repeats(hands)
-        hands.group_by &:number
-    end
+
+    p 
 
 
     
 
-    # d = Deck.new
-    # white = d.deal_hand()
-    # puts "------"
-    # black = d.deal_hand()
+    d = Deck.new
+    white = d.deal_hand()
+    puts "------"
+    black = d.deal_hand()
 
 end
 
