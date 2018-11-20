@@ -67,6 +67,10 @@ class Hand < Deck
         matcher(2)
     end
 
+    def three_of_a_kind()
+        matcher(3)
+    end
+
     ranks = {straight_flush:  8, four_of_a_kind: 7, full_house: 6,
         flush:5, straight: 4, three_of_a_kind: 3,
         two_pair: 2, pair: 1
