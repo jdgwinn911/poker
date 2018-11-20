@@ -1,8 +1,7 @@
 class Cards
     def initialize(value, suit)
     end
-    CARDVAL = %i[2 3 4 5 6 7 8 9 10 11 12 13 14]
-    CARDSUIT = %i[Spades Clubs Diamonds Hearts]
+    CARDVAL = %i[2 3 4 5 6 7 8 9 10 11 12 13 14]; CARDSUIT = %i[Spades Clubs Diamonds Hearts]
     Card = Struct.new(:value, :suit) do
         def to_s() 
             "#{value.capitalize} of #{suit.capitalize}"
@@ -24,7 +23,7 @@ class Deck < Cards
     def deal_hand(card_array)
         @hand = Hand.new
         5.times do
-            #  @hand << @shuffled.pop() #for testing purposes i had to comment this out ..this is used to auto-populate the cards and shovel into hand
+            #  @hand << @shuffled.pop() #for testing purposes i had to comment this out ..this is used to shovel cards into hand after auto populating the cards and flatten them to make deck
         end
         card_array.each do |v| # this is used to hard code instead of auto-populating which is for the testing
           @hand << Card.new(v[0], v[1]) 
