@@ -84,19 +84,20 @@ class Hand < Deck
 
     def two_pair()
         x = card_val_array()
-        y = []
+        y = []; is = true; wrong = false
         x.each do |v|
             x.count(v) == 2 ?  y << v : false
         end
         z = x.select { |k| y[0] != k} 
         z.each do |v|
-            return z.count(v) == 2 ? true : false 
+            z.count(v) == 2 ? y << is : y << wrong 
         end
+        return y.include?(true)
     end
 
-    ranks = {straight_flush:  8, four_of_a_kind: 7, full_house: 6,
-        flush:5, straight: 4, three_of_a_kind: 3,
-        two_pair: 2, pair: 1
+    ranks = {straight_flush: 8, four_of_a_kind: 7, full_house: 6,
+             flush:5, straight: 4, three_of_a_kind: 3,
+             two_pair: 2, pair: 1, craphand: 0
     }.freeze
     attr_reader :cards
 end
