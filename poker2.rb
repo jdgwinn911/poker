@@ -4,29 +4,31 @@ class Cards
     CARDVAL = %i[2 3 4 5 6 7 8 9 10 11 12 13 14]
     CARDSUIT = %i[Spades Clubs Diamonds Hearts]
     Card = Struct.new(:value, :suit) do
-        def to_s() # redefine to_s  to bring back cards as strings
+        def to_s() 
             "#{value.capitalize} of #{suit.capitalize}"
         end
-        def ==(other) # avoiding dynamic constant error by looking value instead of object id
+        def ==(other)
             self.value == other.value
         end
     end
+    attr_reader :Card
 end
 
 class Deck < Cards
     def initialize()
+    @hand = []
     @deck = CARDVAL.flat_map { |value| CARDSUIT.map{|suit| Card.new(value, suit)}} 
     @shuffled = @deck.shuffle
     end
     
-    def deal_hand()
+    def deal_hand(card_array)
         @hand = Hand.new
         5.times do
-            @hand << @shuffled.pop()
+            # @hand << @shuffled.pop()
         end
-        # card_array.each do |v|
-        #     @hand << v 
-        # end
+        card_array.each do |v|
+            @hand << Card.new(v[0], v[1])
+        end
         return hand
     end
     attr_reader :deck
@@ -46,18 +48,26 @@ class Hand < Deck
         end
         return stwing
     end
+
     def <<(other_card)
         @cards << other_card
     end
 
-    def hand_pair() # must return true 
-
+    def hand_pair() # must return true
+        tmp_arr = []
+        @cards.each do |v|
+            tmp_arr << v.value.to_s
+        end
+        tmp_arr.each do |v|
+            return tmp_arr.count(v) == 2 ?  true : false
+        end
     end
 
     ranks = {straight_flush:  8, four_of_a_kind: 7, full_house: 6,
         flush:5, straight: 4, three_of_a_kind: 3,
         two_pair: 2, pair: 1
     }.freeze
+    attr_reader :cards
 end
 # d = Deck.new
 # white = d.deal_hand(); puts white

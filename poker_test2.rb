@@ -2,21 +2,17 @@ require "minitest/autorun"
 require_relative "poker2.rb"
 
 class Poker2 < Minitest::Test
-    def test_that_hand_is_getting_cards
+    def test_that_hand_is_pair
     temp = Deck.new
     temp_arr = []
-    temp_arr << Cards.new("4", "Clubs")
-    temp_arr << Cards.new("3", "Spades")
-    temp_arr << Cards.new("5", "Hearts")
-    temp_arr << Cards.new("5", "Spades")
-    temp_arr << Cards.new("8", "Diamonds")
-    # temp.deal_hand(Cards.new("5", "S"))
-    # temp.deal_hand(Cards.new("4", "H"))
-    # temp.deal_hand(Cards.new("6", "C"))
-    # temp.deal_hand(Cards.new("8", "D"))
-    temp.deal_hand()
+    temp_arr << ["4", "Clubs"]
+    temp_arr << ["3", "Clubs"]
+    temp_arr << ["4", "Diamonds"]
+    temp_arr << ["6", "Hearts"]
+    temp_arr << ["9", "Spades"]
+    temp.deal_hand(temp_arr)
     game = Hand.new
-    assert_equal("5 of Spades", game.hand_pair())
+    assert_equal(true, temp.hand.hand_pair())
     end
 end
 
