@@ -15,17 +15,19 @@ end
 
 class Deck < Cards
     def initialize()
-    @hand = []
     @deck = CARDVAL.flat_map { |value| CARDSUIT.map{|suit| Card.new(value, suit)}} 
-     @shuffled = @deck.shuffle
+    @shuffled = @deck.shuffle
     end
     
     def deal_hand()
-        hand = Hand.new
-     5.times do
-        hand << @shuffled.pop()
-     end
-     return hand
+        @hand = Hand.new
+        5.times do
+            @hand << @shuffled.pop()
+        end
+        # card_array.each do |v|
+        #     @hand << v 
+        # end
+        return hand
     end
     attr_reader :deck
     attr_reader :shuffled
@@ -57,10 +59,10 @@ class Hand < Deck
         two_pair: 2, pair: 1
     }.freeze
 end
-d = Deck.new
-white = d.deal_hand(); puts white
-puts "------"
-black = d.deal_hand(); puts black
+# d = Deck.new
+# white = d.deal_hand(); puts white
+# puts "------"
+# black = d.deal_hand(); puts black
 
 
 
