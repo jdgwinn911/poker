@@ -12,7 +12,7 @@ class Poker2 < Minitest::Test
     temp_arr << ["9", "Spades"]
     temp.deal_hand(temp_arr)
     game = Hand.new
-    assert_equal(true, temp.hand.two_pair())
+    assert_equal(true, temp.hand.pair())
     end
 
 
