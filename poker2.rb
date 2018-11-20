@@ -24,11 +24,11 @@ class Deck < Cards
     def deal_hand(card_array)
         @hand = Hand.new
         5.times do
-            # @hand << @shuffled.pop()
+             @hand << @shuffled.pop() #for testing purposes i had to comment this out ..this is used to auto-populate the cards and shovel into hand
         end
-        card_array.each do |v|
-            @hand << Card.new(v[0], v[1])
-        end
+        #  card_array.each do |v| # this is used to hard code instead of auto-populating which is for the testing
+            #  @hand << Card.new(v[0], v[1]) 
+        #  end
         return hand
     end
     attr_reader :deck
@@ -53,14 +53,17 @@ class Hand < Deck
         @cards << other_card
     end
 
-    def hand_pair() # must return true
+    def matcher(holder) 
         tmp_arr = []
         @cards.each do |v|
             tmp_arr << v.value.to_s
         end
         tmp_arr.each do |v|
-            return tmp_arr.count(v) == 2 ?  true : false
+            return tmp_arr.count(v) == holder ?  true : false
         end
+    end
+
+    def two_pair()
     end
 
     ranks = {straight_flush:  8, four_of_a_kind: 7, full_house: 6,
