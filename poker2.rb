@@ -62,6 +62,14 @@ class Hand < Deck
         end
     end
 
+    def card_val_array()
+        timp_arr = []
+        @cards.each do |v|
+            timp_arr << v.value.to_s
+        end
+        return timp_arr
+    end
+
     def pair()
         matcher(2)
     end
@@ -75,7 +83,15 @@ class Hand < Deck
     end
 
     def two_pair()
-        
+        x = card_val_array()
+        y = []
+        x.each do |v|
+            x.count(v) == 2 ?  y << v : false
+        end
+        z = x.select { |k| y[0] != k} 
+        z.each do |v|
+            return z.count(v) == 2 ? true : false 
+        end
     end
 
     ranks = {straight_flush:  8, four_of_a_kind: 7, full_house: 6,
