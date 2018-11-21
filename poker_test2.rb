@@ -61,7 +61,7 @@ class Poker2 < Minitest::Test
     def test_for_full_house
         temp = Deck.new
         temp_arr = []
-        temp_arr << ["4", "Clubs"]
+        temp_arr << ["3", "Clubs"]
         temp_arr << ["3", "Clubs"]
         temp_arr << ["4", "Diamonds"]
         temp_arr << ["3", "Hearts"]

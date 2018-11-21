@@ -86,6 +86,7 @@ class Hand < Deck
     end
 
     def full_house()
+        matcher(2) && matcher(3) ? true : false
     end
 
     def two_pair()
