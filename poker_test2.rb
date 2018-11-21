@@ -70,5 +70,18 @@ class Poker2 < Minitest::Test
         game = Hand.new
         assert_equal(true, temp.hand.full_house())
     end
+
+    def test_for_full_house
+        temp = Deck.new
+        temp_arr = []
+        temp_arr << ["3", "Clubs"]
+        temp_arr << ["8", "Clubs"]
+        temp_arr << ["6", "Clubs"]
+        temp_arr << ["2", "Clubs"]
+        temp_arr << ["9", "Clubs"]
+        temp.deal_hand(temp_arr)
+        game = Hand.new
+        assert_equal(true, temp.hand.flush())
+    end
 end
 

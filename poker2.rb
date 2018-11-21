@@ -89,6 +89,9 @@ class Hand < Deck
         matcher(2) && matcher(3) ? true : false
     end
 
+    def flush()
+    end
+
     def two_pair()
         x = card_val_array()
         y = []; is = true; wrong = false
