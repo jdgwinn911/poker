@@ -58,8 +58,11 @@ class Hand < Deck
             tmp_arr << v.value.to_s
         end
         tmp_arr.each do |v|
-            return tmp_arr.count(v) == holder ?  true : false
+            if tmp_arr.count(v) == holder
+                return true
+            end
         end
+        false
     end
 
     def card_val_array()
