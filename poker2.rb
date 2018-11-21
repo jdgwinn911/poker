@@ -85,6 +85,9 @@ class Hand < Deck
         matcher(4)
     end
 
+    def full_house()
+    end
+
     def two_pair()
         x = card_val_array()
         y = []; is = true; wrong = false
