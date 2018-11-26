@@ -124,5 +124,18 @@ class Poker2 < Minitest::Test
         assert_equal(1, temp.hand.straight_flush())
     end
 
+    def test_for_score
+        temp = Deck.new
+        temp_arr = []
+        temp_arr << ["3", "Clubs"]
+        temp_arr << ["4", "Clubs"]
+        temp_arr << ["5", "Clubs"]
+        temp_arr << ["6", "Clubs"]
+        temp_arr << ["7", "Clubs"]
+        temp.deal_hand(temp_arr)
+        game = Hand.new
+        assert_equal(1, temp.hand.ranks())
+    end
+
 end
 

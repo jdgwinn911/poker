@@ -129,7 +129,9 @@ class Hand < Deck
     def hi_hand(hand)
         ready_cards()
         return @val_arr.sort.join.to_i
+    end
 
+    def ranks()
 
     end
     attr_reader :cards
