@@ -121,7 +121,8 @@ class Hand < Deck
         val_arr.sort.each_cons(2).all? {|x,y| y == x + 1} == true ? 1 : 0
     end
 
-    def straight_flush
+    def straight_flush()
+        straight() && flush() == 1 ? 1 : 0
 
     end
 
