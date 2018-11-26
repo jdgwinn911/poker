@@ -24,11 +24,11 @@ class Deck < Cards
     def deal_hand(card_array)
         @hand = Hand.new
         5.times do
-            #  @hand << @shuffled.pop() #for testing purposes i had to comment this out ..this is used to shovel cards into hand after auto populating the cards and flatten them to make deck
+            @hand << @shuffled.pop() #for testing purposes i had to comment this out ..this is used to shovel cards into hand after auto populating the cards and flatten them to make deck
         end
-        card_array.each do |v| # this is used to hard code instead of auto-populating which is for the testing
-          @hand << Card.new(v[0], v[1]) 
-        end
+        # card_array.each do |v| # this is used to hard code instead of auto-populating which is for the testing
+        #   @hand << Card.new(v[0], v[1]) 
+        # end
         return hand
     end
     attr_reader :deck
@@ -78,20 +78,20 @@ class Hand < Deck
         @suit_arr = []
         @cards.each do |v|
             suit_arr << v.suit.to_s
-            val_arr << v.value.to_i
+            val_arr << v.value.to_s.to_i
         end
     end
 
     def pair()
-        matcher(2)
+        matcher(2) ? 1 : 0
     end
 
     def three_of_a_kind()
-        matcher(3)
+        matcher(3) ? 1: 0
     end
 
     def four_of_a_kind()
-        matcher(4)
+        matcher(4) ? 1 : 0
     end
 
     def full_house()
@@ -133,16 +133,31 @@ class Hand < Deck
 
     def ranks()
         ready_cards()
-        [0, pair(), two_pair(), three_of_a_kind(), straight(), flush(), full_house(), four_of_a_kind(), straight_flush(), hi_hand(val_arr)].join().to_i
+        [straight_flush(), four_of_a_kind(), full_house(), flush(), straight(), three_of_a_kind(), two_pair(), pair(), hi_hand(val_arr)].join
     end
+    def game_play()
+        z = Deck.new
+        @player1 = z.deal_hand(@cards)
+        @player2 = z.deal_hand(@cards)
+        if @player1.ranks() > @player2.ranks()
+            return "player 1 wins"
+        elsif @player2.ranks() > @player1.ranks()
+            return "player 2 wins"
+        else 
+            return "it's a tie"
+        end
+        ranks(@player1, @player2)
+    end
+    attr_reader :player1
+    attr_reader :player2
     attr_reader :cards
     attr_reader :suit_arr
     attr_reader :val_arr
 end
 # d = Deck.new
-# white = d.deal_hand(); puts white
+# player1 = d.deal_hand(@cards); puts player1.ranks()
 # puts "------"
-# black = d.deal_hand(); puts black
+# player2 = d.deal_hand(@cards); puts player2.ranks()
 
 
 

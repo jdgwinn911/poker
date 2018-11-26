@@ -141,18 +141,21 @@ class Poker2 < Minitest::Test
         temp = Deck.new
         temp_arr = []
         temp_arr2 = []
-        temp_arr << ["3", "Clubs"]
         temp_arr << ["4", "Clubs"]
-        temp_arr << ["5", "Clubs"]
-        temp_arr << ["6", "Clubs"]
-        temp_arr << ["7", "Clubs"]
-        temp_arr2 << ["3", "Clubs"]
-        temp_arr2 << ["4", "Clubs"]
+        temp_arr << ["4", "Hearts"]
+        temp_arr << ["4", "Diamonds"]
+        temp_arr << ["4", "Spades"]
+        temp_arr << ["7", "Clubs"] 
+
+        temp_arr2 << ["2", "Spades"]
+        temp_arr2 << ["2", "Diamonds"]
+        temp_arr2 << ["5", "Hearts"]
         temp_arr2 << ["5", "Clubs"]
-        temp_arr2 << ["6", "Clubs"]
-        temp_arr2 << ["7", "Spades"]
+        temp_arr2 << ["2", "Hearts"]
         y = temp.deal_hand(temp_arr)
+        puts y.ranks
         z = temp.deal_hand(temp_arr2)
+        puts z.ranks
         game = Hand.new
         assert_equal(true, y.ranks() > z.ranks())
     end

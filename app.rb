@@ -1,5 +1,5 @@
 require 'sinatra'
-require_relative "poker1.rb"
+require_relative "poker2.rb"
 enable :sessions
 get '/' do
   erb :poker
