@@ -116,7 +116,10 @@ class Hand < Deck
         return y.include?(true)
     end
 
-    def hi_hand()
+    def hi_hand(hand)
+        ready_cards()
+        return @val_arr.sort.join.to_i
+
 
     end
     attr_reader :cards
