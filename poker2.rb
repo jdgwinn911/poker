@@ -8,6 +8,7 @@ class Cards
         end
         def ==(other)
             self.value == other.value
+            self.suit == other.suit
         end
     end
     attr_reader :Card
@@ -72,6 +73,14 @@ class Hand < Deck
         end
         return timp_arr
     end
+    def ready_cards()
+        @val_arr = []
+        @suit_arr = []
+        @cards.each do |v|
+            suit_arr << v.suit.to_s
+            val_arr << v.value.to_s
+        end
+    end
 
     def pair()
         matcher(2)
@@ -90,6 +99,8 @@ class Hand < Deck
     end
 
     def flush()
+        ready_cards()
+        suit_arr.uniq.count == 1 ? true : false
     end
 
     def two_pair()
@@ -105,11 +116,12 @@ class Hand < Deck
         return y.include?(true)
     end
 
-    ranks = {straight_flush: 8, four_of_a_kind: 7, full_house: 6,
-             flush:5, straight: 4, three_of_a_kind: 3,
-             two_pair: 2, pair: 1, craphand: 0
-    }.freeze
+    def hi_hand()
+
+    end
     attr_reader :cards
+    attr_reader :suit_arr
+    attr_reader :val_arr
 end
 # d = Deck.new
 # white = d.deal_hand(); puts white

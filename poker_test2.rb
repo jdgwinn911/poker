@@ -62,7 +62,7 @@ class Poker2 < Minitest::Test
         temp = Deck.new
         temp_arr = []
         temp_arr << ["3", "Clubs"]
-        temp_arr << ["3", "Clubs"]
+        temp_arr << ["3", "Diamonds"]
         temp_arr << ["4", "Diamonds"]
         temp_arr << ["3", "Hearts"]
         temp_arr << ["4", "Spades"]
@@ -82,6 +82,20 @@ class Poker2 < Minitest::Test
         temp.deal_hand(temp_arr)
         game = Hand.new
         assert_equal(true, temp.hand.flush())
+    end
+
+    def test_for_hi_hand
+        temp = Deck.new
+        temp_arr = []
+        temp_arr << ["3", "Clubs"]
+        temp_arr << ["8", "Clubs"]
+        temp_arr << ["6", "Clubs"]
+        temp_arr << ["2", "Clubs"]
+        temp_arr << ["9", "Clubs"]
+        temp.deal_hand(temp_arr)
+        game = Hand.new
+        assert_equal([38629], temp.hand.hi_hand())
+
     end
 end
 
