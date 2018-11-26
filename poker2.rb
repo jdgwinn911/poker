@@ -78,7 +78,7 @@ class Hand < Deck
         @suit_arr = []
         @cards.each do |v|
             suit_arr << v.suit.to_s
-            val_arr << v.value.to_s
+            val_arr << v.value.to_i
         end
     end
 
@@ -117,7 +117,8 @@ class Hand < Deck
     end
 
     def straight()
-
+        ready_cards()
+        val_arr.sort.each_cons(2).all? {|x,y| y == x + 1} == true ? 1 : 0
     end
 
     def hi_hand(hand)

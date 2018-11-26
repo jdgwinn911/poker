@@ -101,14 +101,14 @@ class Poker2 < Minitest::Test
     def test_for_straight
         temp = Deck.new
         temp_arr = []
-        temp_arr << ["3", "Clubs"]
-        temp_arr << ["8", "Clubs"]
-        temp_arr << ["6", "Clubs"]
-        temp_arr << ["2", "Clubs"]
-        temp_arr << ["9", "Clubs"]
+        temp_arr << ["3", "Hearts"]
+        temp_arr << ["4", "Spades"]
+        temp_arr << ["5", "Clubs"]
+        temp_arr << ["6", "Diamonds"]
+        temp_arr << ["7", "Clubs"]
         temp.deal_hand(temp_arr)
         game = Hand.new
-        assert_equal(23689, temp.hand.straight())
+        assert_equal(1, temp.hand.straight())
     end
 
 end
