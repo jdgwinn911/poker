@@ -60,10 +60,10 @@ class Hand < Deck
         end
         tmp_arr.each do |v|
             if tmp_arr.count(v) == holder
-                return true
+                return 1 
             end
         end
-        false
+        0
     end
 
     def card_val_array()
@@ -95,25 +95,29 @@ class Hand < Deck
     end
 
     def full_house()
-        matcher(2) && matcher(3) ? true : false
+        matcher(2) && matcher(3) ? 1 : 0
     end
 
     def flush()
         ready_cards()
-        suit_arr.uniq.count == 1 ? true : false
+        suit_arr.uniq.count == 1 ? 1 : 0
     end
 
     def two_pair()
         x = card_val_array()
-        y = []; is = true; wrong = false
+        y = []; is = 1; wrong = 0
         x.each do |v|
-            x.count(v) == 2 ?  y << v : false
+            x.count(v) == 2 ?  y << v : 0
         end
         z = x.select { |k| y[0] != k} 
         z.each do |v|
             z.count(v) == 2 ? y << is : y << wrong 
         end
-        return y.include?(true)
+        return y.include?(1) == true ? 1 : 0
+    end
+
+    def straight()
+
     end
 
     def hi_hand(hand)

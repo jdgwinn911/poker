@@ -12,7 +12,7 @@ class Poker2 < Minitest::Test
     temp_arr << ["9", "Spades"]
     temp.deal_hand(temp_arr)
     game = Hand.new
-    assert_equal(true, temp.hand.pair())
+    assert_equal(1, temp.hand.pair())
     end
 
 
@@ -26,7 +26,7 @@ class Poker2 < Minitest::Test
         temp_arr << ["9", "Spades"]
         temp.deal_hand(temp_arr)
         game = Hand.new
-        assert_equal(true, temp.hand.three_of_a_kind())
+        assert_equal(1, temp.hand.three_of_a_kind())
     end
 
 
@@ -40,7 +40,7 @@ class Poker2 < Minitest::Test
         temp_arr << ["7", "Spades"]
         temp.deal_hand(temp_arr)
         game = Hand.new
-        assert_equal(true, temp.hand.four_of_a_kind())
+        assert_equal(1, temp.hand.four_of_a_kind())
     end
 
 
@@ -54,7 +54,7 @@ class Poker2 < Minitest::Test
     temp_arr << ["6", "Spades"]
     temp.deal_hand(temp_arr)
     game = Hand.new
-    assert_equal(true, temp.hand.two_pair())
+    assert_equal(1, temp.hand.two_pair())
     end
 
     
@@ -68,7 +68,7 @@ class Poker2 < Minitest::Test
         temp_arr << ["4", "Spades"]
         temp.deal_hand(temp_arr)
         game = Hand.new
-        assert_equal(true, temp.hand.full_house())
+        assert_equal(1, temp.hand.full_house())
     end
 
     def test_for_full_house
@@ -81,7 +81,7 @@ class Poker2 < Minitest::Test
         temp_arr << ["9", "Clubs"]
         temp.deal_hand(temp_arr)
         game = Hand.new
-        assert_equal(true, temp.hand.flush())
+        assert_equal(1, temp.hand.flush())
     end
 
     def test_for_hi_hand
@@ -97,5 +97,19 @@ class Poker2 < Minitest::Test
         assert_equal(23689, temp.hand.hi_hand(temp_arr))
 
     end
+
+    def test_for_straight
+        temp = Deck.new
+        temp_arr = []
+        temp_arr << ["3", "Clubs"]
+        temp_arr << ["8", "Clubs"]
+        temp_arr << ["6", "Clubs"]
+        temp_arr << ["2", "Clubs"]
+        temp_arr << ["9", "Clubs"]
+        temp.deal_hand(temp_arr)
+        game = Hand.new
+        assert_equal(23689, temp.hand.straight())
+    end
+
 end
 
