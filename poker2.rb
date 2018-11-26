@@ -121,6 +121,10 @@ class Hand < Deck
         val_arr.sort.each_cons(2).all? {|x,y| y == x + 1} == true ? 1 : 0
     end
 
+    def straight_flush
+
+    end
+
     def hi_hand(hand)
         ready_cards()
         return @val_arr.sort.join.to_i
