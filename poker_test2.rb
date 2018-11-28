@@ -160,5 +160,14 @@ class Poker2 < Minitest::Test
         assert_equal(true, y.ranks() > z.ranks())
     end
 
+
+    def test_fo_wicky
+        player1 = Hand.new
+        player1.game_play()
+        assert_equal("", player1.game_play())
+        assert_equal("", player1.player1.cards[0].value)
+
+
+    end
 end
 

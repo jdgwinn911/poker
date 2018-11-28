@@ -37,6 +37,7 @@ class Deck < Cards
 end
 
 class Hand < Deck
+    include Comparable 
     def initialize()
         @cards = []
     end
@@ -51,6 +52,16 @@ class Hand < Deck
 
     def <<(other_card)
         @cards << other_card
+    end
+
+    def <=>(other)
+        counter = 0 
+        self.each do |z|
+            other.each do |x|
+                z[counter] <=> x[counter]
+                counter += 1
+            end
+        end
     end
 
     def matcher(holder) 
@@ -83,19 +94,19 @@ class Hand < Deck
     end
 
     def pair()
-        matcher(2) ? 1 : 0
+        matcher(2) == 1 ? 1 : 0
     end
 
     def three_of_a_kind()
-        matcher(3) ? 1: 0
+        matcher(3) == 1 ? 1: 0
     end
 
     def four_of_a_kind()
-        matcher(4) ? 1 : 0
+        matcher(4) == 1 ? 1 : 0
     end
 
     def full_house()
-        matcher(2) && matcher(3) ? 1 : 0
+        matcher(2) == 1  && matcher(3) == 1 ? 1 : 0
     end
 
     def flush()
@@ -122,31 +133,36 @@ class Hand < Deck
     end
 
     def straight_flush()
-        straight() && flush() == 1 ? 1 : 0
+        straight() == 1 && flush() == 1 ? 1 : 0
 
     end
 
     def hi_hand(hand)
         ready_cards()
-        return @val_arr.sort.join.to_i
+        @val_arr.sort().last().to_i
+        # temp = @val_arr.sort.last.to_i
+        # temp2 = @val_arr.index(temp)
+        # return "#{temp} of #{@suit_arr[temp2]}"
     end
+    
 
-    def ranks()
+    def ranks() # give both players hands grab highest out of both if 1 > 2 return w/e if != do again but go down an index
         ready_cards()
-        [straight_flush(), four_of_a_kind(), full_house(), flush(), straight(), three_of_a_kind(), two_pair(), pair(), hi_hand(val_arr)].join
+        [straight_flush(), four_of_a_kind(), full_house(), flush(), straight(), three_of_a_kind(), two_pair(), pair()].join
     end
     def game_play()
         z = Deck.new
         @player1 = z.deal_hand(@cards)
         @player2 = z.deal_hand(@cards)
-        if @player1.ranks() > @player2.ranks()
-            return "player 1 wins"
-        elsif @player2.ranks() > @player1.ranks()
-            return "player 2 wins"
-        else 
-            return "it's a tie"
-        end
-        ranks(@player1, @player2)
+        puts @player1.to_s
+        puts player1.ranks()
+        puts "---------"
+        puts @player2.to_s
+        puts player2.ranks()
+        puts player1.ranks() <=> player2.ranks()
+        
+        puts "this is the comparing of high cards #{player1.val_arr.sort.reverse <=> player2.val_arr.sort.reverse}"
+
     end
     attr_reader :player1
     attr_reader :player2
@@ -154,10 +170,8 @@ class Hand < Deck
     attr_reader :suit_arr
     attr_reader :val_arr
 end
-# d = Deck.new
-# player1 = d.deal_hand(@cards); puts player1.ranks()
-# puts "------"
-# player2 = d.deal_hand(@cards); puts player2.ranks()
+d = Hand.new
+d.game_play()
 
 
 
