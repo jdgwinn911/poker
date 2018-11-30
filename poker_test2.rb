@@ -169,5 +169,18 @@ class Poker2 < Minitest::Test
 
 
     end
+
+
+    def test_for_ranks
+        temp = Deck.new
+        temp_arr = []
+        temp_arr << ["3", "Clubs"]
+        temp_arr << ["4", "Clubs"]
+        temp_arr << ["2", "Clubs"]
+        temp_arr << ["5", "Clubs"]
+        temp_arr << ["8", "Clubs"]
+        player1 = temp.manuel_hand_deal(temp_arr)
+        assert_equal("", player1.matcher2(1))
+    end
 end
 

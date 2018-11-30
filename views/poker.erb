@@ -10,7 +10,7 @@
         <div class="winnerbox">
         <%game = Hand.new%>
 
-        <%game_result = game.game_play()%>
+        <%game_result = game.output()%>
         <%if game_result == "player 1 wins" %>
         <font color="yellow">Player 1 Won!</font>
         <br><font color="yellow"><%=game.player1.ranks()%></font>
