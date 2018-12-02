@@ -253,6 +253,10 @@ class Hand < Deck
             return "it's a tie"
         end
 
+        ash = {00000000 => "High card", 00000001 => "Pair", 00000011 => "Two Pair", 00000100 => "Three of a kind", 00001000 => "Straight", 00010000 => "Flush", 00100101 => "Full House", 01000000 => "Four of a Kind", 10000000 => "Straight Flush"}
+        if ash.has_key?(ranks())
+            return ash[ranks()]
+        end
     end
     attr_reader :player1
     attr_reader :player2
@@ -260,6 +264,7 @@ class Hand < Deck
     attr_reader :suit_arr
     attr_reader :val_arr
 end
+
 
 
 
