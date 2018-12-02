@@ -9,13 +9,12 @@ body {
     position: relative;
     top: -12px;
     left: -1px;
-    background: #3083bb;
+    
     color: yellow;
     border-style: outset;
-    border-color: #0066A2;
     height: 50px;
     width: 100px;
-    font: bold 15px arial, sans-serif;
+    font: bold 13px arial, sans-serif;
     text-shadow: none;
 }
 .winnerbox {
@@ -80,35 +79,26 @@ body {
     text-transform: uppercase;
 }
 
-.pokerfordums a:link, a:visited {
-    background-color: cadetblue;
-    color: yellow;
-    padding: 14px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border: 17px solid #ec020279;
-    width: 18%;
-    position: absolute;
-    top: 87%;
-    left: 20%;
-}
-
-.cbook a:link, a:visited {
-    background-color: cadetblue;
-    color: yellow;
-    padding: 14px 25px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    border: 17px solid #ec020279;
-    width: 310%;
-    position: absolute;
-    top: 90%;
-    left: -388%;
-}
-
-
 a:hover, a:active {
     background-color: red;
+}
+
+.button {
+    display: inline-block;
+    padding: 15px 13px;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    color: azure;
+    background-color: rgba(91, 196, 245, 0.575);
+    border: #00ffff87;
+    border-radius: 16px;
+    box-shadow: 0 6px #999;
+  }
+
+.button:active {
+  background-color: #41acf3b6;
+  box-shadow: 0 5px #666;
+  transform: translateY(3px);
 }
