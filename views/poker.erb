@@ -1,8 +1,4 @@
 <html>
-
-
-
-
    <head>
         <script src="/js/poker.js"></script>
         <link rel="stylesheet" type="text/css" href="css/poker.css">
@@ -15,15 +11,8 @@
         <%game = Hand.new%>
 
         <%game_result = game.output()%>
-        <%if game_result == "player 1 wins" %>
-        <font color="yellow">Player 1 Won!</font>
-        <br><font color="yellow"><%=game.player1.ranks()%></font>
-        <%elsif game_result == "player 2 wins"%>
-        <font color="yellow">Player 2 Won!</font>
-        <br><font color="yellow"><%=game.player2.ranks()%></font>
-        <%elsif game_result == "it's a tie"%>
-        <font color="yellow">it's a tie!</font>
-        <%end%>
+        <br><font color="yellow"><%=game.output()%></font>
+        
         </div><br><br>
 
         <div class="tentacle1" name="tent1">

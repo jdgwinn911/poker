@@ -218,10 +218,6 @@ class Hand < Deck
     end
 
     def hi_game_hands()
-        
-        p "this is player1's setup #{@player1.setup_hi()}"
-        p"============="
-        p "this is player2's setup #{@player2.setup_hi()}"
         @player1.setup_hi().each_with_index do |v, i|
             p v
            if v > @player2.setup_hi()[i]
@@ -234,34 +230,42 @@ class Hand < Deck
 
     end
 
+    def who_hand(who)
+        ash = {0 => "High card", 1 => "Pair", 11 => "Two Pair", 100 => "Three of a kind", 1000 => "Straight", 10000 => "Flush", 100101 => "Full House", 1000000 => "Four of a Kind", 10000000 => "Straight Flush"}
+        @x = ""
+        y = ""
+            if who == 1
+                y = @player1
+            elsif who == -1
+                y = @player2
+            end
+        
+        ash.each do|key, value|
+            if y.ranks().to_i == key
+               @x = value
+            end
+        end
+    end
     def output()
         d = Deck.new
         @player1 = d.deal_hand(hand)
         @player2 = d.deal_hand(hand)
-        hsh = {1 => "player 1 wins", -1 => "player 2 wins"}
-        @player1.to_s
-        puts @player1.ranks()
-        puts "==============="
-        @player2.to_s
-        puts @player2.ranks()
-
+        hsh = {1 => "Player 1 wins", -1 => "Player 2 wins"}
         if hsh.has_key?(game_play())
-            return hsh[game_play()]
+            who_hand(game_play())
+            return "#{hsh[game_play()]} \n #{x}"
         elsif hsh.has_key?(hi_game_hands())
-            return hsh[hi_game_hands()]
+            who_hand(hi_game_hands())
+            return "#{hsh[hi_game_hands()]} \n #{x}"
         else 
-            return "it's a tie"
-        end
-
-        ash = {00000000 => "High card", 00000001 => "Pair", 00000011 => "Two Pair", 00000100 => "Three of a kind", 00001000 => "Straight", 00010000 => "Flush", 00100101 => "Full House", 01000000 => "Four of a Kind", 10000000 => "Straight Flush"}
-        if ash.has_key?(ranks())
-            return ash[ranks()]
+            return "It's a tie"
         end
     end
     attr_reader :player1
     attr_reader :player2
     attr_reader :cards
     attr_reader :suit_arr
+    attr_reader :x
     attr_reader :val_arr
 end
 
